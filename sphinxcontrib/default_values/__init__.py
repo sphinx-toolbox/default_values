@@ -147,9 +147,13 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
-			for search_string in [":default", ":Default"]:
-				if line.startswith(search_string):
-					lines.remove(line)
+			if re.match(r"^:(default|Default) ", line):
+				lines.remove(line)
+
+		# Remove all remaining :no-default *: lines
+		for i, line in enumerate(lines):
+			if re.match(r"^:(No|no)[-_](default|Default) ", line):
+				lines.remove(line)
 
 
 def process_default_format(app: Sphinx) -> None:
@@ -157,6 +161,7 @@ def process_default_format(app: Sphinx) -> None:
 	Prepare the formatting of the default value.
 
 	:param app:
+	:type app:
 	"""
 
 	default_description_format: str = app.config.default_description_format
