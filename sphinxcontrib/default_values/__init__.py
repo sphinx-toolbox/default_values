@@ -5,6 +5,10 @@ A Sphinx directive to specify that a module has extra requirements, and show how
 :copyright: Copyright (c) 2020 by Dominic Davis-Foster <dominic@davis-foster.co.uk>
 :license: MIT, see LICENSE for details.
 """
+# Based on https://github.com/agronholm/sphinx-autodoc-typehints
+# Copyright (c) Alex Grönholm
+# MIT Licensed
+#
 
 # stdlib
 import inspect
