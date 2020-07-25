@@ -1,0 +1,20 @@
+# Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper
+---
+modname: "default_values"
+import_name: sphinxcontrib.default_values
+copyright_years: "2020"
+author: "Dominic Davis-Foster"
+email: "dominic@davis-foster.co.uk"
+username: "domdfcoding"
+version: "0.0.0"
+license: "MIT License"
+short_desc: "Sphinx extension to show default values in documentation."
+
+enable_conda: False
+
+# Versions to run tests for
+python_versions:
+  - '3.6'
+  - '3.7'
+  - '3.8'
+  - '3.9-dev'
