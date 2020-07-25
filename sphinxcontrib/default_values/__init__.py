@@ -28,8 +28,6 @@ __license__: str = "MIT"
 __version__: str = "0.0.0"
 __email__: str = "dominic@davis-foster.co.uk"
 
-# For type hinting install docutils-stubs
-
 
 def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[str]) -> None:
 	"""
@@ -48,7 +46,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 	"""
 
 	if isinstance(obj, property):
-		obj = obj.fget
+		return None
 
 	if callable(obj):
 		if inspect.isclass(obj):
@@ -57,17 +55,17 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 		obj = inspect.unwrap(obj)
 		signature = Signature(obj)
 
-		default_description_format: str = app.config.default_description_format
+		default_description_format: str = app.config.default_description_format  # type: ignore
 
 		for argname, param in signature.parameters.items():
 			if argname.endswith('_'):
-				argname = '{}\\_'.format(argname[:-1])
+				argname = f'{argname[:-1]}\\_'
 
 			default_value = param.default
 			formatted_annotation = None
 
 			# Get the default value from the signature
-			if default_value is not inspect._empty:
+			if default_value is not inspect._empty:  # type: ignore
 
 				if isinstance(default_value, bool):
 					formatted_annotation = f":py:obj:`{default_value}`"
@@ -82,7 +80,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 			for i, line in enumerate(lines):
 				for search_string in default_searchfor:
 					if line.startswith(search_string):
-						formatted_annotation = line.split(search_string)[-1]
+						formatted_annotation = line.split(search_string)[-1].lstrip(" ")
 						lines.remove(line)
 						break
 
@@ -109,7 +107,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 					if not lines[insert_index].endswith('.'):
 						lines[insert_index] += '.'
 
-					lines.insert(insert_index + 1, f'    {default_description_format % formatted_annotation}.')
+					lines.insert(insert_index + 1, f'{default_description_format % formatted_annotation}.')
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
@@ -121,6 +119,8 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 			if re.match(r"^:(No|no)[-_](default|Default) ", line):
 				lines.remove(line)
 
+	return None
+
 
 def process_default_format(app: Sphinx) -> None:
 	"""
@@ -130,7 +130,7 @@ def process_default_format(app: Sphinx) -> None:
 	:type app:
 	"""
 
-	default_description_format: str = app.config.default_description_format
+	default_description_format: str = app.config.default_description_format  # type: ignore
 
 	# Check the substitution is in the string and is preceded by whitespace, or is at the beginning of the string
 	if "%s" in default_description_format:
@@ -143,7 +143,7 @@ def process_default_format(app: Sphinx) -> None:
 		else:
 			default_description_format += "%s"
 
-	app.config.default_description_format = default_description_format
+	app.config.default_description_format = default_description_format  # type: ignore
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
