@@ -35,40 +35,6 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 	"""
 	Add default values to the docstring.
 
-	Default values are taken from the function/class signature.
-	They can be overridden using the ``:default <argname>: <default value>`` option in the docstring:
-
-	.. code-block:: rest
-
-		:param leap_year: Whether to return :py:obj:`True` for 29th Feb.
-		:default leap_year: :py:obj:`True`
-		:type leap_year: bool, optional
-
-	.. TODO:: Example output
-
-	The value must be formatted how you would like it to be displayed in Sphinx.
-	This can be useful when the default value in the signature is :py:obj:`None`
-	and the true default value is assigned in the function body,
-	such as for a mutable default argument.
-
-	The default value can be suppressed using the ``:no-default <argname>`` option:
-
-	.. code-block:: rest
-
-		:param leap_year: Whether to return :py:obj:`True` for 29th Feb.
-		:no-default leap_year:
-		:type leap_year: bool, optional
-
-	.. TODO:: Example output
-
-	No default value is shown if the argument does not have a default value.
-
-	The formatting of the default value can be customised using the
-	``default_description_format`` option in ``setup.py``.
-	By default this is ``"Default %s"``, which produces output like::
-
-	.. TODO:: Example output
-
 	:param app:
 	:param what:
 	:type what:

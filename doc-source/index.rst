@@ -128,6 +128,7 @@ Installation
 	:maxdepth: 3
 	:caption: Documentation
 
+	usage
 	docs
 	contributing
 	Source
