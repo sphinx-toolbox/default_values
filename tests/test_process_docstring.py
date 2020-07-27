@@ -1,5 +1,6 @@
 # stdlib
-from typing import Callable
+from decimal import Decimal
+from typing import Any, Callable, List, Optional, Tuple
 
 # 3rd party
 import pytest
@@ -253,5 +254,75 @@ def test_process_docstring_class(app):
 			"    Default :py:obj:`True`.",
 			":param coloured_output: Whether to use coloured output.",
 			"    Default :py:obj:`False`.",
+			"",
+			]
+
+
+def test_process_docstring_demo(app):
+	lines = [
+			":param a: No default.",
+			":param b: A float.",
+			":param c: An empty string.",
+			":param d: A space (or a smiley face?)",
+			":param e: A string.",
+			":param f: A Tuple.",
+			":param g: A Decimal.",
+			":param h: An int.",
+			":param i: Default None.",
+			":param j: Overridden default.",
+			":default j: ``[]``",
+			":param k: Suppressed default.",
+			":no-default k:",
+			":param l: This is a really long description.",
+			"    It spans multiple lines.",
+			"    The quick brown fox jumps over the lazy dog.",
+			"    The default value should be added at the end regardless.",
+			"",
+			]
+
+	def demo(
+			a: Any,
+			b: float = 0.0,
+			c: str = '',
+			d: str = ' ',
+			e: str = "hello world",
+			f: Tuple = (),
+			g: Decimal = Decimal("12.34"),
+			h: int = 1234,
+			i: Optional[List[str]] = None,
+			j: Optional[List[str]] = None,
+			k: Optional[List[str]] = None,
+			l: str = '',
+			):
+		pass
+
+	process_docstring(app, None, None, demo, None, lines)
+
+	assert lines == [
+			":param a: No default.",
+			":param b: A float.",
+			"    Default ``0.0``.",
+			":param c: An empty string.",
+			"    Default ``''``.",
+			":param d: A space (or a smiley face?).",
+			"    Default ``'␣'``.",
+			":param e: A string.",
+			"    Default ``'hello␣world'``.",
+			":param f: A Tuple.",
+			"    Default ``()``.",
+			":param g: A Decimal.",
+			"    Default ``Decimal('12.34')``.",
+			":param h: An int.",
+			"    Default ``1234``.",
+			":param i: Default None.",
+			"    Default :py:obj:`None`.",
+			":param j: Overridden default.",
+			"    Default ``[]``.",
+			":param k: Suppressed default.",
+			":param l: This is a really long description.",
+			"    It spans multiple lines.",
+			"    The quick brown fox jumps over the lazy dog.",
+			"    The default value should be added at the end regardless.",
+			"    Default ``''``.",
 			"",
 			]

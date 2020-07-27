@@ -1,6 +1,6 @@
 # stdlib
-from decimal import Decimal
-from typing import Any, List, Optional, Tuple
+from decimal import Decimal  # pragma: no cover
+from typing import Any, List, Optional, Tuple  # pragma: no cover
 
 
 def demo(
@@ -16,13 +16,13 @@ def demo(
 		j: Optional[List[str]] = None,
 		k: Optional[List[str]] = None,
 		l: str = '',
-		):
+		):  # pragma: no cover
 	"""
 
 	:param a: No default.
 	:param b: A float.
 	:param c: An empty string.
-	:param d: A space (or a simley face?)
+	:param d: A space (or a smiley face?)
 	:param e: A string.
 	:param f: A Tuple.
 	:param g: A Decimal.
@@ -31,7 +31,7 @@ def demo(
 	:param j: Overridden default.
 	:default j: ``[]``
 	:param k: Suppressed default.
-	:no-default j:
+	:no-default k:
 	:param l: This is a really long description.
 		It spans multiple lines.
 		The quick brown fox jumps over the lazy dog.
