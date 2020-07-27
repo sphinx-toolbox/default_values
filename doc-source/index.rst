@@ -130,6 +130,7 @@ Installation
 
 	usage
 	docs
+	demo
 	contributing
 	Source
 

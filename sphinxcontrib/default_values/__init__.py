@@ -71,6 +71,8 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 					formatted_annotation = f":py:obj:`{default_value}`"
 				elif default_value is None:
 					formatted_annotation = f":py:obj:`None`"
+				elif isinstance(default_value, str):
+					formatted_annotation = f"``'{default_value.replace(' ', '␣')}'``"
 				else:
 					formatted_annotation = f"``{default_value!r}``"
 
