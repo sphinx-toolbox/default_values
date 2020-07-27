@@ -48,7 +48,7 @@ def test_process_docstring(app):
 			"A factory function to return a custom list subclass with a name.",
 			"",
 			":param name: The name of the list.",
-			"\tDefault ``'NamedList'``.",
+			"    Default ``'NamedList'``.",
 			"",
 			":return:",
 			]
@@ -70,7 +70,7 @@ def test_process_docstring_override(app):
 			"A factory function to return a custom list subclass with a name.",
 			"",
 			":param name: The name of the list.",
-			"\tDefault py:obj:`True`.",
+			"    Default py:obj:`True`.",
 			"",
 			":return:",
 			]
@@ -112,7 +112,7 @@ def test_process_docstring_missing_fullstop(app):
 			"A factory function to return a custom list subclass with a name.",
 			"",
 			":param name: The name of the list.",
-			"\tDefault ``'NamedList'``.",
+			"    Default ``'NamedList'``.",
 			"",
 			":return:",
 			]
@@ -134,7 +134,7 @@ def test_process_docstring_redundant_defaults(app):
 			"A factory function to return a custom list subclass with a name.",
 			"",
 			":param name: The name of the list.",
-			"\tDefault ``'NamedList'``.",
+			"    Default ``'NamedList'``.",
 			"",
 			":return:",
 			]
@@ -159,7 +159,7 @@ def test_process_docstring_underscores(app):
 			"A factory function to return a custom list subclass with a name.",
 			"",
 			":param name\\_: The name of the list.",
-			"\tDefault ``'NamedList'``.",
+			"    Default ``'NamedList'``.",
 			"",
 			":return:",
 			]
@@ -186,11 +186,11 @@ def test_process_docstring_multiple_arguments(app):
 			"",
 			":param foo: An argument.",
 			":param bar: Another argument.",
-			"\tDefault :py:obj:`None`.",
+			"    Default :py:obj:`None`.",
 			":param show: Whether to print the result.",
-			"\tDefault :py:obj:`True`.",
+			"    Default :py:obj:`True`.",
 			":param coloured_output: Whether to use coloured output.",
-			"\tDefault :py:obj:`False`.",
+			"    Default :py:obj:`False`.",
 			"",
 			]
 
@@ -248,10 +248,10 @@ def test_process_docstring_class(app):
 			"",
 			":param foo: An argument.",
 			":param bar: Another argument.",
-			"\tDefault :py:obj:`None`.",
+			"    Default :py:obj:`None`.",
 			":param show: Whether to print the result.",
-			"\tDefault :py:obj:`True`.",
+			"    Default :py:obj:`True`.",
 			":param coloured_output: Whether to use coloured output.",
-			"\tDefault :py:obj:`False`.",
+			"    Default :py:obj:`False`.",
 			"",
 			]
