@@ -49,6 +49,7 @@ extensions = [
 		"sphinx.ext.autosummary",
 		"autodocsumm",
 		"sphinx_copybutton",
+		"sphinxcontrib.default_values",
 		# "sphinx_gitstamp",
 		]
 
@@ -95,8 +96,6 @@ html_context = {
 		}
 
 htmlhelp_basename = slug
-
-typehints_fully_qualified = True
 
 latex_documents = [('index', f'{slug}.tex', project, author, 'manual')]
 man_pages = [('index', slug, project, [author], 1)]
