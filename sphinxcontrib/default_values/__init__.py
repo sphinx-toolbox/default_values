@@ -103,11 +103,20 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 			if formatted_annotation is not None:
 				if insert_index is not None:
-					# Ensure the previous line has a fullstop at the end.
-					if not lines[insert_index].endswith('.'):
-						lines[insert_index] += '.'
 
-					lines.insert(insert_index + 1, f"    {default_description_format % formatted_annotation}.")
+					# Look ahead to find the index of the next unindented line, and insert before it.
+					for idx, line in enumerate(lines[insert_index + 1:]):
+						if not line.startswith("    "):
+
+							# Ensure the previous line has a fullstop at the end.
+							if lines[insert_index + idx][-1] not in ".,;:":
+								lines[insert_index + idx] += '.'
+
+							lines.insert(
+									insert_index + 1 + idx,
+									f"    {default_description_format % formatted_annotation}."
+									)
+							break
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
