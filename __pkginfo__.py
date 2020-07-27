@@ -39,7 +39,7 @@ __copyright__ = """
 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 """
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 modname = "default_values"
 pypi_name = "default_values"
 import_name = "sphinxcontrib.default_values"
