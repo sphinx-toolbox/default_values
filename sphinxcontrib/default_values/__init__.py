@@ -107,7 +107,8 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 					if not lines[insert_index].endswith('.'):
 						lines[insert_index] += '.'
 
-					lines.insert(insert_index + 1, f'\t{default_description_format % formatted_annotation}.')
+					lines.insert(insert_index + 1, '')
+					lines.insert(insert_index + 1, f"\t{default_description_format % formatted_annotation}.")
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
