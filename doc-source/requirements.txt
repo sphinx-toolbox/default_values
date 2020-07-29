@@ -1,4 +1,5 @@
 autodocsumm
+domdf_sphinx_theme>=0.0.8
 extras_require
 sphinx-copybutton>=0.2.12
 sphinx-notfound-page
