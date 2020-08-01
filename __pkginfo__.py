@@ -44,9 +44,9 @@ modname = "default_values"
 pypi_name = "default_values"
 import_name = "sphinxcontrib.default_values"
 __license__ = "MIT License"
-short_desc = "Sphinx extension to show default values in documentation."
-__author__ = author = "Dominic Davis-Foster"
-author_email = "dominic@davis-foster.co.uk"
+short_desc = 'Sphinx extension to show default values in documentation.'
+__author__ = author = 'Dominic Davis-Foster'
+author_email = 'dominic@davis-foster.co.uk'
 github_username = "domdfcoding"
 web = github_url = "https://github.com/domdfcoding/default_values"
 repo_root = pathlib.Path(__file__).parent
