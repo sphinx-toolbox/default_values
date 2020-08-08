@@ -44,5 +44,5 @@ class MockApp:
 		)
 def test_process_default_format(value, expects):
 	app = MockApp(value)
-	process_default_format(app)
+	process_default_format(app)  # type: ignore
 	assert app.config.default_description_format == expects
