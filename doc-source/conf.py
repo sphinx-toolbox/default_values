@@ -34,25 +34,24 @@ language = 'en'
 package_root = "sphinxcontrib/default_values"
 
 extensions = [
-		'sphinx.ext.intersphinx',
-		'sphinx.ext.autodoc',
-		'sphinx.ext.mathjax',
-		'sphinx.ext.viewcode',
-		'sphinxcontrib.httpdomain',
-		"sphinxcontrib.extras_require",
-		"sphinx.ext.todo",
-		"sphinxemoji.sphinxemoji",
-		"notfound.extension",
-		"sphinx_tabs.tabs",
-		"sphinx-prompt",
-		"sphinx_autodoc_typehints",
-		"sphinx.ext.autosummary",
-		"autodocsumm",
-		"sphinx_copybutton",
-		"sphinxcontrib.default_values",
-		"sphinxcontrib.toctree_plus",
-		# "sphinx_gitstamp",
-		]
+	'sphinx.ext.intersphinx',
+	'sphinx.ext.autodoc',
+	'sphinx.ext.mathjax',
+	'sphinx.ext.viewcode',
+	'sphinxcontrib.httpdomain',
+	'sphinxcontrib.extras_require',
+	'sphinx.ext.todo',
+	'sphinxemoji.sphinxemoji',
+	'notfound.extension',
+	'sphinx_tabs.tabs',
+	'sphinx-prompt',
+	'sphinx.ext.autosummary',
+	'autodocsumm',
+	'sphinx_copybutton',
+	'sphinxcontrib.default_values',
+	'sphinxcontrib.toctree_plus',
+	'sphinx_autodoc_typehints'
+	]
 
 sphinxemoji_style = 'twemoji'
 todo_include_todos = bool(os.environ.get("SHOW_TODOS", 0))
@@ -118,6 +117,11 @@ autodoc_default_options = {
 				"__parameters__",
 				"__subclasshook__",
 				"__init_subclass__",
+				"__attrs_attrs__",
+				"__init__",
+				"__new__",
+				"__getnewargs__",
+				"__abstractmethods__",
 				])
 		}
 
