@@ -53,7 +53,11 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 			obj = getattr(obj, '__init__')
 
 		obj = inspect.unwrap(obj)
-		signature = Signature(obj)
+
+		try:
+			signature = Signature(obj)
+		except ValueError:
+			return None
 
 		default_description_format: str = app.config.default_description_format  # type: ignore
 
