@@ -50,7 +50,7 @@ extensions = [
 	'sphinx_copybutton',
 	'sphinxcontrib.default_values',
 	'sphinxcontrib.toctree_plus',
-	'sphinx_autodoc_typehints'
+	'sphinx_autodoc_typehints',
 	]
 
 sphinxemoji_style = 'twemoji'
@@ -122,6 +122,7 @@ autodoc_default_options = {
 				"__new__",
 				"__getnewargs__",
 				"__abstractmethods__",
+				"__hash__",
 				])
 		}
 
