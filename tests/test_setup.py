@@ -29,7 +29,7 @@ def test_setup():
 		"parallel_write_safe": True,
 		}
 
-	assert app.config_values == [("default_description_format", "Default %s", 'env')]
+	assert app.config_values == [("default_description_format", "Default %s", "env")]
 	assert app.connections == [
 			("builder-inited", process_default_format),
 			("autodoc-process-docstring", process_docstring),

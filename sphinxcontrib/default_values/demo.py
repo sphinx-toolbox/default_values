@@ -2,6 +2,8 @@
 from decimal import Decimal  # pragma: no cover
 from typing import Any, List, Optional, Tuple  # pragma: no cover
 
+__all__ = ["demo"]
+
 
 def demo(
 		a: Any,

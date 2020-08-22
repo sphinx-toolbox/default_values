@@ -37,9 +37,9 @@ def app():
 def test_process_docstring(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -47,10 +47,10 @@ def test_process_docstring(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			"    Default ``'NamedList'``.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -58,10 +58,10 @@ def test_process_docstring(app):
 def test_process_docstring_override(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			":default name: py:obj:`True`",
-			"",
+			'',
 			":return:",
 			]
 
@@ -69,10 +69,10 @@ def test_process_docstring_override(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			"    Default py:obj:`True`.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -80,10 +80,10 @@ def test_process_docstring_override(app):
 def test_process_docstring_suppress(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			":no-default name:",
-			"",
+			'',
 			":return:",
 			]
 
@@ -91,9 +91,9 @@ def test_process_docstring_suppress(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -101,9 +101,9 @@ def test_process_docstring_suppress(app):
 def test_process_docstring_missing_fullstop(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list",
-			"",
+			'',
 			":return:",
 			]
 
@@ -111,10 +111,10 @@ def test_process_docstring_missing_fullstop(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			"    Default ``'NamedList'``.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -122,10 +122,10 @@ def test_process_docstring_missing_fullstop(app):
 def test_process_docstring_redundant_defaults(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list",
 			":default foo: bar",
-			"",
+			'',
 			":return:",
 			]
 
@@ -133,10 +133,10 @@ def test_process_docstring_redundant_defaults(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name: The name of the list.",
 			"    Default ``'NamedList'``.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -144,10 +144,10 @@ def test_process_docstring_redundant_defaults(app):
 def test_process_docstring_underscores(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name\\_: The name of the list",
 			":default foo: bar",
-			"",
+			'',
 			":return:",
 			]
 
@@ -158,10 +158,10 @@ def test_process_docstring_underscores(app):
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
-			"",
+			'',
 			":param name\\_: The name of the list.",
 			"    Default ``'NamedList'``.",
-			"",
+			'',
 			":return:",
 			]
 
@@ -169,12 +169,12 @@ def test_process_docstring_underscores(app):
 def test_process_docstring_multiple_arguments(app):
 	lines = [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			":param show: Whether to print the result.",
 			":param coloured_output: Whether to use coloured output.",
-			"",
+			'',
 			]
 
 	def my_func(foo, bar=None, show=True, coloured_output=False):
@@ -184,7 +184,7 @@ def test_process_docstring_multiple_arguments(app):
 
 	assert lines == [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			"    Default :py:obj:`None`.",
@@ -192,19 +192,19 @@ def test_process_docstring_multiple_arguments(app):
 			"    Default :py:obj:`True`.",
 			":param coloured_output: Whether to use coloured output.",
 			"    Default :py:obj:`False`.",
-			"",
+			'',
 			]
 
 
 def test_process_docstring_property(app):
 	lines = [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			":param show: Whether to print the result.",
 			":param coloured_output: Whether to use coloured output.",
-			"",
+			'',
 			]
 
 	class MyClass:
@@ -217,24 +217,24 @@ def test_process_docstring_property(app):
 
 	assert lines == [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			":param show: Whether to print the result.",
 			":param coloured_output: Whether to use coloured output.",
-			"",
+			'',
 			]
 
 
 def test_process_docstring_class(app):
 	lines = [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			":param show: Whether to print the result.",
 			":param coloured_output: Whether to use coloured output.",
-			"",
+			'',
 			]
 
 	class MyClass:
@@ -246,7 +246,7 @@ def test_process_docstring_class(app):
 
 	assert lines == [
 			"Does something.",
-			"",
+			'',
 			":param foo: An argument.",
 			":param bar: Another argument.",
 			"    Default :py:obj:`None`.",
@@ -254,7 +254,7 @@ def test_process_docstring_class(app):
 			"    Default :py:obj:`True`.",
 			":param coloured_output: Whether to use coloured output.",
 			"    Default :py:obj:`False`.",
-			"",
+			'',
 			]
 
 
@@ -277,7 +277,7 @@ def test_process_docstring_demo(app):
 			"    It spans multiple lines.",
 			"    The quick brown fox jumps over the lazy dog.",
 			"    The default value should be added at the end regardless.",
-			"",
+			'',
 			]
 
 	def demo(
@@ -324,5 +324,5 @@ def test_process_docstring_demo(app):
 			"    The quick brown fox jumps over the lazy dog.",
 			"    The default value should be added at the end regardless.",
 			"    Default ``''``.",
-			"",
+			'',
 			]

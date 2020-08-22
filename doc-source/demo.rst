@@ -3,6 +3,7 @@ Demo
 *******
 
 .. automodule:: sphinxcontrib.default_values.demo
+	:no-autosummary:
 	:members:
 
 

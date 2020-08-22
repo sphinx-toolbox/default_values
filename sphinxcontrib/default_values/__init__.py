@@ -1,10 +1,30 @@
 #!/usr/bin/env python3
+#
+#  __init__.py
 """
 A Sphinx directive to specify that a module has extra requirements, and show how to install them.
-
-:copyright: Copyright (c) 2020 by Dominic Davis-Foster <dominic@davis-foster.co.uk>
-:license: MIT, see LICENSE for details.
 """
+#
+#  Copyright © 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to deal
+#  in the Software without restriction, including without limitation the rights
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in all
+#  copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+#  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+#  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+#  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+#  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+#  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+#  OR OTHER DEALINGS IN THE SOFTWARE.
+#
 # Based on https://github.com/agronholm/sphinx-autodoc-typehints
 # Copyright (c) Alex Grönholm
 # MIT Licensed
@@ -28,6 +48,8 @@ __license__: str = "MIT"
 __version__: str = "0.0.7"
 __email__: str = "dominic@davis-foster.co.uk"
 
+__all__ = ["process_docstring", "process_default_format", "setup"]
+
 
 def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[str]) -> None:
 	"""
@@ -50,7 +72,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 	if callable(obj):
 		if inspect.isclass(obj):
-			obj = getattr(obj, '__init__')
+			obj = getattr(obj, "__init__")
 
 		obj = inspect.unwrap(obj)
 
@@ -63,7 +85,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 		for argname, param in signature.parameters.items():
 			if argname.endswith('_'):
-				argname = f'{argname[:-1]}\\_'
+				argname = f"{argname[:-1]}\\_"
 
 			default_value = param.default
 			formatted_annotation = None
@@ -81,7 +103,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 					formatted_annotation = f"``{default_value!r}``"
 
 			# Check if the user has overridden the default value in the docstring
-			default_searchfor = [f':{field} {argname}:' for field in ('default', 'Default')]
+			default_searchfor = [f":{field} {argname}:" for field in ("default", "Default")]
 
 			for i, line in enumerate(lines):
 				for search_string in default_searchfor:
@@ -99,7 +121,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 					break
 
 			# Add the default value
-			searchfor = [f':{field} {argname}:' for field in ('param', 'parameter', 'arg', 'argument')]
+			searchfor = [f":{field} {argname}:" for field in ("param", "parameter", "arg", "argument")]
 			insert_index = None
 
 			for i, line in enumerate(lines):
@@ -171,9 +193,9 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 	"""
 
 	# Custom formatting for the default value indication
-	app.add_config_value('default_description_format', "Default %s", 'env')
-	app.connect('builder-inited', process_default_format)
-	app.connect('autodoc-process-docstring', process_docstring)
+	app.add_config_value("default_description_format", "Default %s", "env")
+	app.connect("builder-inited", process_default_format)
+	app.connect("autodoc-process-docstring", process_docstring)
 
 	return {
 			"version": __version__,
