@@ -18,7 +18,10 @@ from __pkginfo__ import __version__
 # User-configurable lines
 # End of user-configurable lines
 
-github_url = "https://github.com/domdfcoding/default_values"
+github_username = "domdfcoding"
+github_repository = "default_values"
+github_url = f"https://github.com/{github_username}/{github_repository}"
+
 
 rst_prolog = f""".. |pkgname| replace:: default_values
 .. |pkgname2| replace:: ``default_values``
@@ -98,6 +101,7 @@ man_pages = [('index', slug, project, [author], 1)]
 texinfo_documents = [('index', slug, project, author, slug, project, 'Miscellaneous')]
 
 toctree_plus_types = {"class", "function", "method", "data"}
+
 
 autodoc_default_options = {
 		'members': None,  # Include all members (methods).
