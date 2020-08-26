@@ -22,6 +22,7 @@ class MockApp:
 
 	def __init__(self, format_):
 		self.config = MockConfig()
+		self.config.docutils_tab_width = 4
 		self.config.default_description_format = format_
 
 

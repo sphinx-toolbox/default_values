@@ -19,6 +19,9 @@ class MockApp:
 	def connect(self, *args):
 		self.connections.append(args)
 
+	def add_source_parser(self, *args, **kwargs):
+		pass
+
 
 def test_setup():
 	app = MockApp()

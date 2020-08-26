@@ -35,10 +35,13 @@ import inspect
 import re
 import string
 import typing
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 # 3rd party
+from docutils.nodes import document
+from docutils.statemachine import StringList
 from sphinx.application import Sphinx
+from sphinx.parsers import RSTParser
 from sphinx.util.inspect import signature as Signature
 
 __author__: str = "Dominic Davis-Foster"
@@ -66,6 +69,9 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 	:type options:
 	:param lines: List of strings representing the current contents of the docstring.
 	"""
+
+	# Size varies depending on docutils config
+	a_tab = " " * app.config.docutils_tab_width  # type: ignore
 
 	if isinstance(obj, property):
 		return None
@@ -142,7 +148,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 							lines.insert(
 									insert_index + 1 + idx,
-									f"    {default_description_format % formatted_annotation}."
+									f"{a_tab}{default_description_format % formatted_annotation}."
 									)
 							break
 
@@ -196,6 +202,15 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 	app.add_config_value("default_description_format", "Default %s", "env")
 	app.connect("builder-inited", process_default_format)
 	app.connect("autodoc-process-docstring", process_docstring)
+
+	# Hack to get the docutils tab size, as there doesn't appear to be any other way
+	class CustomRSTParser(RSTParser):
+
+		def parse(self, inputstring: Union[str, StringList], document: document) -> None:
+			app.config.docutils_tab_width = document.settings.tab_width  # type: ignore
+			super().parse(inputstring, document)
+
+	app.add_source_parser(CustomRSTParser, override=True)
 
 	return {
 			"version": __version__,

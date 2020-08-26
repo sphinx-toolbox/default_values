@@ -1,1 +1,2 @@
+docutils
 sphinx>=3.0.3
