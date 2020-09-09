@@ -53,6 +53,9 @@ __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = ["process_docstring", "process_default_format", "setup"]
 
+default_regex = re.compile(r"^:(default|Default) ")
+no_default_regex = re.compile(r"^:(No|no)[-_](default|Default) ")
+
 
 def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[str]) -> None:
 	"""
@@ -102,9 +105,9 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 				if isinstance(default_value, bool):
 					formatted_annotation = f":py:obj:`{default_value}`"
 				elif default_value is None:
-					formatted_annotation = f":py:obj:`None`"
+					formatted_annotation = ":py:obj:`None`"
 				elif isinstance(default_value, str):
-					formatted_annotation = f"``'{default_value.replace(' ', '␣')}'``"
+					formatted_annotation = f"``{default_value.replace(' ', '␣')!r}``"
 				else:
 					formatted_annotation = f"``{default_value!r}``"
 
@@ -140,7 +143,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 					# Look ahead to find the index of the next unindented line, and insert before it.
 					for idx, line in enumerate(lines[insert_index + 1:]):
-						if not line.startswith("    "):
+						if not line.startswith(" " * 4):
 
 							# Ensure the previous line has a fullstop at the end.
 							if lines[insert_index + idx][-1] not in ".,;:":
@@ -154,12 +157,12 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
-			if re.match(r"^:(default|Default) ", line):
+			if default_regex.match(line):
 				lines.remove(line)
 
 		# Remove all remaining :no-default *: lines
 		for i, line in enumerate(lines):
-			if re.match(r"^:(No|no)[-_](default|Default) ", line):
+			if no_default_regex.match(line):
 				lines.remove(line)
 
 	return None
@@ -199,7 +202,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 	"""
 
 	# Custom formatting for the default value indication
-	app.add_config_value("default_description_format", "Default %s", "env")
+	app.add_config_value("default_description_format", "Default %s", "env", [str])
 	app.connect("builder-inited", process_default_format)
 	app.connect("autodoc-process-docstring", process_docstring)
 
