@@ -146,7 +146,7 @@ def test_process_docstring_underscores(app):
 	lines = [
 			"A factory function to return a custom list subclass with a name.",
 			'',
-			":param name\\_: The name of the list",
+			r":param name\_: The name of the list",
 			":default foo: bar",
 			'',
 			":return:",
@@ -160,7 +160,7 @@ def test_process_docstring_underscores(app):
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
 			'',
-			":param name\\_: The name of the list.",
+			r":param name\_: The name of the list.",
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
@@ -278,6 +278,7 @@ def test_process_docstring_demo(app):
 			"    It spans multiple lines.",
 			"    The quick brown fox jumps over the lazy dog.",
 			"    The default value should be added at the end regardless.",
+			":param m: Tab.",
 			'',
 			]
 
@@ -294,6 +295,7 @@ def test_process_docstring_demo(app):
 			j: Optional[List[str]] = None,
 			k: Optional[List[str]] = None,
 			l: str = '',
+			m: str = '\t',
 			):
 		pass
 
@@ -325,5 +327,7 @@ def test_process_docstring_demo(app):
 			"    The quick brown fox jumps over the lazy dog.",
 			"    The default value should be added at the end regardless.",
 			"    Default ``''``.",
+			":param m: Tab.",
+			r"    Default ``'\t'``.",
 			'',
 			]

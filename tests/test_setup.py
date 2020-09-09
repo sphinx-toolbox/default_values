@@ -1,3 +1,7 @@
+# 3rd party
+from sphinx.events import EventListener
+from sphinx_toolbox.testing import Sphinx, run_setup
+
 # this package
 import sphinxcontrib.default_values
 from sphinxcontrib.default_values import __version__, process_default_format, process_docstring
@@ -24,16 +28,19 @@ class MockApp:
 
 
 def test_setup():
-	app = MockApp()
 
-	assert sphinxcontrib.default_values.setup(app=app) == {  # type: ignore
-		"version": __version__,
-		"parallel_read_safe": True,
-		"parallel_write_safe": True,
-		}
+	app: Sphinx
+	setup_ret, directives, roles, additional_nodes, app = run_setup(sphinxcontrib.default_values.setup)
 
-	assert app.config_values == [("default_description_format", "Default %s", "env")]
-	assert app.connections == [
-			("builder-inited", process_default_format),
-			("autodoc-process-docstring", process_docstring),
-			]
+	assert setup_ret == {
+			"version": __version__,
+			"parallel_read_safe": True,
+			"parallel_write_safe": True,
+			}
+
+	assert app.config.values["default_description_format"] == ("Default %s", "env", [str])
+
+	assert app.events.listeners == {
+			"builder-inited": [EventListener(id=0, handler=process_default_format, priority=500)],
+			"autodoc-process-docstring": [EventListener(id=1, handler=process_docstring, priority=500)],
+			}

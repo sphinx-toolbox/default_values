@@ -1,7 +1,7 @@
 coverage>=5.1
 coverage_pyver_pragma>=0.0.5
-docutils-stubs
 pytest>=6.0.0
 pytest-cov>=2.8.1
 pytest-randomly>=3.3.1
 pytest-rerunfailures>=9.0
+sphinx-toolbox[testing]>=0.3.1
