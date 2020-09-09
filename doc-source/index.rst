@@ -98,16 +98,6 @@ default_values
 
 .. end shields
 
-Installation
----------------
-
-.. start installation
-
-.. installation:: default_values
-	:pypi:
-	:github:
-
-.. end installation
 
 .. toctree::
 	:hidden:
@@ -118,9 +108,15 @@ Installation
 	:maxdepth: 3
 	:caption: Documentation
 
+	installation
 	usage
 	docs
 	demo
+
+.. toctree::
+	:maxdepth: 3
+	:caption: Contributing
+
 	contributing
 	Source
 
