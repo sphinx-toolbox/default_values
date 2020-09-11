@@ -279,6 +279,7 @@ def test_process_docstring_demo(app):
 			"    The quick brown fox jumps over the lazy dog.",
 			"    The default value should be added at the end regardless.",
 			":param m: Tab.",
+			":param n: This argument's default value is undefined.",
 			'',
 			]
 
@@ -296,6 +297,7 @@ def test_process_docstring_demo(app):
 			k: Optional[List[str]] = None,
 			l: str = '',
 			m: str = '\t',
+			n: Any = ...,
 			):
 		pass
 
@@ -329,5 +331,6 @@ def test_process_docstring_demo(app):
 			"    Default ``''``.",
 			":param m: Tab.",
 			r"    Default ``'\t'``.",
+			":param n: This argument's default value is undefined.",
 			'',
 			]

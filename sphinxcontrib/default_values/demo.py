@@ -18,6 +18,8 @@ def demo(
 		j: Optional[List[str]] = None,
 		k: Optional[List[str]] = None,
 		l: str = '',
+		m: str = "\t",
+		n: Any = ...,
 		):  # pragma: no cover
 	"""
 
@@ -38,7 +40,10 @@ def demo(
 		It spans multiple lines.
 		The quick brown fox jumps over the lazy dog.
 		The default value should be added at the end regardless.
-
+	:param m: Tab.
+	:param n: This argument's default value is undefined.
 
 	The description for ``d`` lacked a fullstop at the end, but one was added automatically.
+
+	The default value of ``n`` was ``Ellipsis``, but it wasn't shown.
 	"""
