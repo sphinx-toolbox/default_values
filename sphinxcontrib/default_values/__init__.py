@@ -100,7 +100,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 			formatted_annotation = None
 
 			# Get the default value from the signature
-			if default_value not in {inspect.Signature.empty, Ellipsis}:  # type: ignore
+			if default_value is not inspect.Signature.empty and default_value is not Ellipsis:
 
 				if isinstance(default_value, bool):
 					formatted_annotation = f":py:obj:`{default_value}`"
