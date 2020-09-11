@@ -53,8 +53,8 @@ __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = ["process_docstring", "process_default_format", "setup"]
 
-default_regex = re.compile(r"^:(default|Default) ")
-no_default_regex = re.compile(r"^:(No|no)[-_](default|Default) ")
+default_regex: typing.Pattern = re.compile(r"^:(default|Default) ")
+no_default_regex: typing.Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
 
 
 def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[str]) -> None:
@@ -100,7 +100,7 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 			formatted_annotation = None
 
 			# Get the default value from the signature
-			if default_value is not inspect._empty:  # type: ignore
+			if default_value not in {inspect.Signature.empty, Ellipsis}:  # type: ignore
 
 				if isinstance(default_value, bool):
 					formatted_annotation = f":py:obj:`{default_value}`"
