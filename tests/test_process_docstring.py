@@ -170,6 +170,33 @@ def test_process_docstring_underscores(app):
 			]
 
 
+def test_process_docstring_underscores_class(app):
+	lines = [
+			"A factory function to return a custom list subclass with a name.",
+			'',
+			r":param name\_: The name of the list",
+			":default foo: bar",
+			'',
+			":return:",
+			]
+
+	class Underscore:
+
+		def __init__(self, name_: str = "NamedList"):
+			pass
+
+	process_docstring(app, '', '', Underscore, {}, lines)
+
+	assert lines == [
+			"A factory function to return a custom list subclass with a name.",
+			'',
+			r":param name\_: The name of the list.",
+			"    Default ``'NamedList'``.",
+			'',
+			":return:",
+			]
+
+
 def test_process_docstring_multiple_arguments(app):
 	lines = [
 			"Does something.",
