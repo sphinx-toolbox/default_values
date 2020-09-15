@@ -34,8 +34,7 @@ A Sphinx directive to specify that a module has extra requirements, and show how
 import inspect
 import re
 import string
-import typing
-from typing import Any, Callable, Dict, Iterator, List, Tuple, Type, Union
+from typing import Any, Callable, Dict, Iterator, List, Mapping, Pattern, Tuple, Type, Union
 
 # 3rd party
 from docutils.nodes import document
@@ -47,7 +46,9 @@ from sphinx.util.inspect import signature as Signature
 try:
 	# 3rd party
 	import attr
-except ImportError:
+except ImportError:  # pragma: no cover
+	# attrs is used in a way that it is only required in situations
+	# where it is available to import, so its fine to do this.
 	pass
 
 __author__: str = "Dominic Davis-Foster"
@@ -57,10 +58,22 @@ __license__: str = "MIT"
 __version__: str = "0.0.11"
 __email__: str = "dominic@davis-foster.co.uk"
 
-__all__ = ["process_docstring", "process_default_format", "setup", "get_class_defaults", "get_function_defaults"]
+__all__ = [
+		"process_docstring",
+		"process_default_format",
+		"setup",
+		"get_class_defaults",
+		"get_function_defaults",
+		"default_regex",
+		"no_default_regex",
+		"get_arguments",
+		]
 
-default_regex: typing.Pattern = re.compile(r"^:(default|Default) ")
-no_default_regex: typing.Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
+#: Regular expression to match default values declared in docstrings.
+default_regex: Pattern = re.compile(r"^:(default|Default) ")
+
+#: Regular expression to match flags in docstrings to suppress default values.
+no_default_regex: Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
 
 
 def process_docstring(
@@ -178,12 +191,7 @@ def get_class_defaults(obj: Type) -> _defaults:
 	:return: An iterator of 2-element tuples comprising the argument name and its default value.
 	"""
 
-	try:
-		signature = Signature(inspect.unwrap(getattr(obj, "__init__")))
-	except ValueError:
-		return None
-
-	for argname, param in signature.parameters.items():
+	for argname, param in get_arguments(getattr(obj, "__init__")).items():
 		if argname.endswith('_'):
 			argname = f"{argname[:-1]}\\_"
 
@@ -210,18 +218,28 @@ def get_function_defaults(obj: Callable) -> _defaults:
 	:return: An iterator of 2-element tuples comprising the argument name and its default value.
 	"""
 
-	try:
-		signature = Signature(inspect.unwrap(obj))
-	except ValueError:
-		return None
-
-	for argname, param in signature.parameters.items():
+	for argname, param in get_arguments(obj).items():
 		if argname.endswith('_'):
 			argname = f"{argname[:-1]}\\_"
 
 		yield argname, param.default
 
 	return None
+
+
+def get_arguments(obj: Callable) -> Mapping[str, inspect.Parameter]:
+	"""
+	Returns a dictionary mapping argument names to parameters/arguments for a function.
+
+	:param obj: A function (can be the ``__init__`` method of a class).
+	"""
+
+	try:
+		signature = Signature(inspect.unwrap(obj))
+	except ValueError:  # pragma: no cover
+		return {}
+
+	return signature.parameters
 
 
 def process_default_format(app: Sphinx) -> None:
@@ -265,7 +283,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 	# Hack to get the docutils tab size, as there doesn't appear to be any other way
 	class CustomRSTParser(RSTParser):
 
-		def parse(self, inputstring: Union[str, StringList], document: document) -> None:
+		def parse(self, inputstring: Union[str, StringList], document: document) -> None:  # pragma: no cover
 			app.config.docutils_tab_width = document.settings.tab_width  # type: ignore
 			super().parse(inputstring, document)
 
