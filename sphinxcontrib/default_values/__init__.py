@@ -35,7 +35,7 @@ import inspect
 import re
 import string
 import typing
-from typing import Any, Dict, Union
+from typing import Any, Callable, Dict, Iterator, List, Tuple, Type, Union
 
 # 3rd party
 from docutils.nodes import document
@@ -44,6 +44,12 @@ from sphinx.application import Sphinx
 from sphinx.parsers import RSTParser
 from sphinx.util.inspect import signature as Signature
 
+try:
+	# 3rd party
+	import attr
+except ImportError:
+	pass
+
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
 
@@ -51,52 +57,44 @@ __license__: str = "MIT"
 __version__: str = "0.0.11"
 __email__: str = "dominic@davis-foster.co.uk"
 
-__all__ = ["process_docstring", "process_default_format", "setup"]
+__all__ = ["process_docstring", "process_default_format", "setup", "get_class_defaults", "get_function_defaults"]
 
 default_regex: typing.Pattern = re.compile(r"^:(default|Default) ")
 no_default_regex: typing.Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
 
 
-def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[str]) -> None:
+def process_docstring(
+		app: Sphinx, what: str, name: str, obj: Any, options: Dict[str, Any], lines: List[str]
+		) -> None:
 	"""
 	Add default values to the docstring.
 
-	:param app:
+	:param app: The Sphinx app.
 	:param what:
-	:type what:
-	:param name:
-	:type name:
-	:param obj:
-	:type obj:
-	:param options:
-	:type options:
+	:param name: The name of the object being documented.
+	:param obj: The object being documented.
+	:param options: Mapping of autodoc options to values.
 	:param lines: List of strings representing the current contents of the docstring.
 	"""
-
-	# Size varies depending on docutils config
-	a_tab = " " * app.config.docutils_tab_width  # type: ignore
 
 	if isinstance(obj, property):
 		return None
 
+	# Size varies depending on docutils config
+	a_tab = " " * app.config.docutils_tab_width  # type: ignore
+
 	if callable(obj):
+
+		default_getter: Union[Callable[[Type], _defaults], Callable[[Callable], _defaults]]
+
 		if inspect.isclass(obj):
-			obj = getattr(obj, "__init__")
-
-		obj = inspect.unwrap(obj)
-
-		try:
-			signature = Signature(obj)
-		except ValueError:
-			return None
+			default_getter = get_class_defaults
+		else:
+			default_getter = get_function_defaults
 
 		default_description_format: str = app.config.default_description_format  # type: ignore
 
-		for argname, param in signature.parameters.items():
-			if argname.endswith('_'):
-				argname = f"{argname[:-1]}\\_"
-
-			default_value = param.default
+		for argname, default_value in default_getter(obj):
 			formatted_annotation = None
 
 			# Get the default value from the signature
@@ -164,6 +162,64 @@ def process_docstring(app: Sphinx, what, name, obj, options, lines: typing.List[
 		for i, line in enumerate(lines):
 			if no_default_regex.match(line):
 				lines.remove(line)
+
+	return None
+
+
+_defaults = Iterator[Tuple[str, Any]]
+
+
+def get_class_defaults(obj: Type) -> _defaults:
+	"""
+	Obtains the default values for the arguments of a class.
+
+	:param obj: The class.
+
+	:return: An iterator of 2-element tuples comprising the argument name and its default value.
+	"""
+
+	try:
+		signature = Signature(inspect.unwrap(getattr(obj, "__init__")))
+	except ValueError:
+		return None
+
+	for argname, param in signature.parameters.items():
+		if argname.endswith('_'):
+			argname = f"{argname[:-1]}\\_"
+
+		default_value = param.default
+
+		if hasattr(obj, "__attrs_attrs__"):
+			# Special casing for attrs classes
+			if default_value is attr.NOTHING:
+				for value in obj.__attrs_attrs__:
+					if value.name == argname and isinstance(value.default, attr.Factory):  # type: ignore
+						default_value = value.default.factory()
+
+		yield argname, default_value
+
+	return None
+
+
+def get_function_defaults(obj: Callable) -> _defaults:
+	"""
+	Obtains the default values for the arguments of a function.
+
+	:param obj: The function.
+
+	:return: An iterator of 2-element tuples comprising the argument name and its default value.
+	"""
+
+	try:
+		signature = Signature(inspect.unwrap(obj))
+	except ValueError:
+		return None
+
+	for argname, param in signature.parameters.items():
+		if argname.endswith('_'):
+			argname = f"{argname[:-1]}\\_"
+
+		yield argname, param.default
 
 	return None
 

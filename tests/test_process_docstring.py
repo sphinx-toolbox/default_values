@@ -1,9 +1,12 @@
 # stdlib
 from decimal import Decimal
-from typing import Any, Callable, List, Optional, Tuple
+from textwrap import dedent
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 # 3rd party
+import attr
 import pytest
+from domdf_python_tools.utils import strtobool
 
 # this package
 from sphinxcontrib.default_values import process_docstring
@@ -44,7 +47,7 @@ def test_process_docstring(app):
 			":return:",
 			]
 
-	process_docstring(app, None, None, namedlist, None, lines)
+	process_docstring(app, '', '', namedlist, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -66,7 +69,7 @@ def test_process_docstring_override(app):
 			":return:",
 			]
 
-	process_docstring(app, None, None, namedlist, None, lines)
+	process_docstring(app, '', '', namedlist, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -88,7 +91,7 @@ def test_process_docstring_suppress(app):
 			":return:",
 			]
 
-	process_docstring(app, None, None, namedlist, None, lines)
+	process_docstring(app, '', '', namedlist, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -108,7 +111,7 @@ def test_process_docstring_missing_fullstop(app):
 			":return:",
 			]
 
-	process_docstring(app, None, None, namedlist, None, lines)
+	process_docstring(app, '', '', namedlist, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -130,7 +133,7 @@ def test_process_docstring_redundant_defaults(app):
 			":return:",
 			]
 
-	process_docstring(app, None, None, namedlist, None, lines)
+	process_docstring(app, '', '', namedlist, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -155,7 +158,7 @@ def test_process_docstring_underscores(app):
 	def underscore(name_: str = "NamedList") -> Callable:
 		pass
 
-	process_docstring(app, None, None, underscore, None, lines)
+	process_docstring(app, '', '', underscore, {}, lines)
 
 	assert lines == [
 			"A factory function to return a custom list subclass with a name.",
@@ -181,7 +184,7 @@ def test_process_docstring_multiple_arguments(app):
 	def my_func(foo, bar=None, show=True, coloured_output=False):
 		pass
 
-	process_docstring(app, None, None, my_func, None, lines)
+	process_docstring(app, '', '', my_func, {}, lines)
 
 	assert lines == [
 			"Does something.",
@@ -214,7 +217,7 @@ def test_process_docstring_property(app):
 		def my_prop(self) -> None:
 			return None
 
-	process_docstring(app, None, None, MyClass.my_prop, None, lines)
+	process_docstring(app, '', '', MyClass.my_prop, {}, lines)
 
 	assert lines == [
 			"Does something.",
@@ -243,7 +246,7 @@ def test_process_docstring_class(app):
 		def __init__(self, foo, bar=None, show=True, coloured_output=False):
 			pass
 
-	process_docstring(app, None, None, MyClass, None, lines)
+	process_docstring(app, '', '', MyClass, {}, lines)
 
 	assert lines == [
 			"Does something.",
@@ -301,7 +304,7 @@ def test_process_docstring_demo(app):
 			):
 		pass
 
-	process_docstring(app, None, None, demo, None, lines)
+	process_docstring(app, '', '', demo, {}, lines)
 
 	assert lines == [
 			":param a: No default.",
@@ -332,5 +335,41 @@ def test_process_docstring_demo(app):
 			":param m: Tab.",
 			r"    Default ``'\t'``.",
 			":param n: This argument's default value is undefined.",
+			'',
+			]
+
+
+@attr.s(slots=True)
+class Device:
+	"""
+	Represents a device in a :class:`~.AcqMethod:`.
+
+	:param device_id: The ID of the device
+	:param display_name: The display name for the device.
+	:param rc_device: Flag to indicate the device is an RC Device. If :py:obj:`False` the device is an SCIC.
+	:param configuration: List of key: value mappings for configuration options.
+	"""
+
+	device_id: str = attr.ib(converter=str)
+	display_name: str = attr.ib(converter=str)
+	rc_device: bool = attr.ib(converter=strtobool, default=False)
+	configuration: List[Dict[str, Any]] = attr.ib(converter=list, default=attr.Factory(list))
+
+
+def test_process_docstring_attrs(app):
+	lines = dedent(Device.__doc__).split("\n")  # type: ignore
+
+	process_docstring(app, '', '', Device, {}, lines)
+
+	assert lines == [
+			'',
+			"Represents a device in a :class:`~.AcqMethod:`.",
+			'',
+			":param device_id: The ID of the device",
+			":param display_name: The display name for the device.",
+			":param rc_device: Flag to indicate the device is an RC Device. If :py:obj:`False` the device is an SCIC.",
+			"    Default :py:obj:`False`.",
+			":param configuration: List of key: value mappings for configuration options.",
+			"    Default ``[]``.",
 			'',
 			]
