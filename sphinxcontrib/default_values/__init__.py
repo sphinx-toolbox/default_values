@@ -76,8 +76,25 @@ default_regex: Pattern = re.compile(r"^:(default|Default) ")
 no_default_regex: Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
 
 
+def escape_trailing__(string: str) -> str:
+	"""
+	Returns the given string with trailing underscores escaped to prevent Sphinx treating them as references.
+
+	:param string:
+	"""
+
+	if string.endswith('_'):
+		return f"{string[:-1]}\\_"
+	return string
+
+
 def process_docstring(
-		app: Sphinx, what: str, name: str, obj: Any, options: Dict[str, Any], lines: List[str]
+		app: Sphinx,
+		what: str,
+		name: str,
+		obj: Any,
+		options: Dict[str, Any],
+		lines: List[str],
 		) -> None:
 	"""
 	Add default values to the docstring.
@@ -108,6 +125,7 @@ def process_docstring(
 		default_description_format: str = app.config.default_description_format  # type: ignore
 
 		for argname, default_value in default_getter(obj):
+			argname = escape_trailing__(argname)
 			formatted_annotation = None
 
 			# Get the default value from the signature
@@ -191,10 +209,9 @@ def get_class_defaults(obj: Type) -> _defaults:
 	:return: An iterator of 2-element tuples comprising the argument name and its default value.
 	"""
 
-	for argname, param in get_arguments(getattr(obj, "__init__")).items():
-		if argname.endswith('_'):
-			argname = f"{argname[:-1]}\\_"
+	# TODO: handle __new__
 
+	for argname, param in get_arguments(getattr(obj, "__init__")).items():
 		default_value = param.default
 
 		if hasattr(obj, "__attrs_attrs__"):
@@ -219,9 +236,6 @@ def get_function_defaults(obj: Callable) -> _defaults:
 	"""
 
 	for argname, param in get_arguments(obj).items():
-		if argname.endswith('_'):
-			argname = f"{argname[:-1]}\\_"
-
 		yield argname, param.default
 
 	return None
