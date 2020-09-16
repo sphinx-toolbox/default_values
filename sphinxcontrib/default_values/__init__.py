@@ -159,6 +159,7 @@ def process_docstring(
 					break
 
 			# Add the default value
+			# TODO: sphinx.domains.python.PyObject.doc_field_types
 			searchfor = [f":{field} {argname}:" for field in ("param", "parameter", "arg", "argument")]
 			insert_index = None
 
@@ -172,7 +173,7 @@ def process_docstring(
 
 					# Look ahead to find the index of the next unindented line, and insert before it.
 					for idx, line in enumerate(lines[insert_index + 1:]):
-						if not line.startswith(" " * 4):
+						if not line.startswith(a_tab):
 
 							# Ensure the previous line has a fullstop at the end.
 							if lines[insert_index + idx][-1] not in ".,;:":
