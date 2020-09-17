@@ -34,7 +34,8 @@ A Sphinx directive to specify that a module has extra requirements, and show how
 import inspect
 import re
 import string
-from typing import Any, Callable, Dict, Iterator, List, Mapping, Pattern, Tuple, Type, Union
+from types import FunctionType, ModuleType
+from typing import Any, Callable, Dict, Iterator, List, Mapping, Optional, Pattern, Tuple, Type, Union
 
 # 3rd party
 from docutils.nodes import document
@@ -88,6 +89,34 @@ def escape_trailing__(string: str) -> str:
 	return string
 
 
+def format_default_value(value: Any) -> Optional[str]:
+	"""
+	Format the value as a string.
+
+	:param value:
+	:return:
+	"""
+
+	if value is not inspect.Signature.empty and value is not Ellipsis:
+
+		if isinstance(value, ModuleType):
+			return f":mod:`{value.__name__}`"
+		elif isinstance(value, FunctionType):
+			return f":py:func:`{value.__module__}.{value.__name__}`"
+		elif inspect.isclass(value):
+			return f":py:class:`{value.__module__}.{value.__name__}`"
+		elif isinstance(value, bool):
+			return f":py:obj:`{value}`"
+		elif value is None:
+			return ":py:obj:`None`"
+		elif isinstance(value, str):
+			return f"``{value.replace(' ', '␣')!r}``"
+		else:
+			return f"``{value!r}``"
+
+	return None
+
+
 def process_docstring(
 		app: Sphinx,
 		what: str,
@@ -126,19 +155,9 @@ def process_docstring(
 
 		for argname, default_value in default_getter(obj):
 			argname = escape_trailing__(argname)
-			formatted_annotation = None
 
 			# Get the default value from the signature
-			if default_value is not inspect.Signature.empty and default_value is not Ellipsis:
-
-				if isinstance(default_value, bool):
-					formatted_annotation = f":py:obj:`{default_value}`"
-				elif default_value is None:
-					formatted_annotation = ":py:obj:`None`"
-				elif isinstance(default_value, str):
-					formatted_annotation = f"``{default_value.replace(' ', '␣')!r}``"
-				else:
-					formatted_annotation = f"``{default_value!r}``"
+			formatted_annotation = format_default_value(default_value)
 
 			# Check if the user has overridden the default value in the docstring
 			default_searchfor = [f":{field} {argname}:" for field in ("default", "Default")]
