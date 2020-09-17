@@ -68,6 +68,7 @@ __all__ = [
 		"default_regex",
 		"no_default_regex",
 		"get_arguments",
+		"format_default_value",
 		]
 
 #: Regular expression to match default values declared in docstrings.
@@ -94,7 +95,8 @@ def format_default_value(value: Any) -> Optional[str]:
 	Format the value as a string.
 
 	:param value:
-	:return:
+
+	.. versionadded:: 0.2.0
 	"""
 
 	if value is not inspect.Signature.empty and value is not Ellipsis:
