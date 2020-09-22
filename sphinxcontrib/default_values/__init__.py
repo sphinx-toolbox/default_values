@@ -146,6 +146,9 @@ def process_docstring(
 
 	if callable(obj):
 
+		if lines[-1]:
+			lines.append('')
+
 		default_getter: Union[Callable[[Type], _defaults], Callable[[Callable], _defaults]]
 
 		if inspect.isclass(obj):
@@ -197,7 +200,8 @@ def process_docstring(
 						if not line.startswith(a_tab):
 
 							# Ensure the previous line has a fullstop at the end.
-							if lines[insert_index + idx][-1] not in ".,;:":
+							line_content = ":".join(lines[insert_index + idx].split(":")[2:]).strip()
+							if line_content and line_content[-1] not in ".,;:":
 								lines[insert_index + idx] += '.'
 
 							lines.insert(

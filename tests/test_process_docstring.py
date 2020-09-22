@@ -227,6 +227,35 @@ def test_process_docstring_multiple_arguments(app):
 			]
 
 
+def test_process_docstring_no_final_newline(app):
+	lines = [
+			"Does something.",
+			'',
+			":param foo: An argument.",
+			":param bar: Another argument.",
+			":param show: Whether to print the result.",
+			":param coloured_output: Whether to use coloured output.",
+			]
+
+	def my_func(foo, bar=None, show=True, coloured_output=False):
+		pass
+
+	process_docstring(app, '', '', my_func, {}, lines)
+
+	assert lines == [
+			"Does something.",
+			'',
+			":param foo: An argument.",
+			":param bar: Another argument.",
+			"    Default :py:obj:`None`.",
+			":param show: Whether to print the result.",
+			"    Default :py:obj:`True`.",
+			":param coloured_output: Whether to use coloured output.",
+			"    Default :py:obj:`False`.",
+			'',
+			]
+
+
 def test_process_docstring_property(app):
 	lines = [
 			"Does something.",
