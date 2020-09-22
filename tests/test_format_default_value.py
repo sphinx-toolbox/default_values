@@ -1,4 +1,5 @@
 # stdlib
+import inspect
 import json
 import re
 
@@ -33,6 +34,8 @@ from sphinxcontrib.default_values import format_default_value
 				("\t", "``'\\t'``"),
 				(1234, "``1234``"),
 				("1234", "``'1234'``"),
+				(Ellipsis, None),
+				(inspect.Signature.empty, None),
 				(re.compile(".*"), "``re.compile('.*')``"),
 				(re.compile(".*", flags=re.ASCII), "``re.compile('.*', re.ASCII)``"),
 				]
