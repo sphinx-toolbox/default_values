@@ -56,6 +56,7 @@ def test_process_docstring(app):
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -78,6 +79,7 @@ def test_process_docstring_override(app):
 			"    Default py:obj:`True`.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -99,6 +101,7 @@ def test_process_docstring_suppress(app):
 			":param name: The name of the list.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -120,6 +123,7 @@ def test_process_docstring_missing_fullstop(app):
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -142,6 +146,7 @@ def test_process_docstring_redundant_defaults(app):
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -167,6 +172,7 @@ def test_process_docstring_underscores(app):
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
+			'',
 			]
 
 
@@ -194,6 +200,7 @@ def test_process_docstring_underscores_class(app):
 			"    Default ``'NamedList'``.",
 			'',
 			":return:",
+			'',
 			]
 
 
