@@ -34,7 +34,7 @@ A Sphinx directive to specify that a module has extra requirements, and show how
 import inspect
 import re
 import string
-from types import FunctionType, ModuleType
+from types import BuiltinFunctionType, FunctionType, ModuleType
 from typing import Any, Callable, Dict, Iterator, List, Mapping, Optional, Pattern, Tuple, Type, Union
 
 # 3rd party
@@ -103,10 +103,15 @@ def format_default_value(value: Any) -> Optional[str]:
 
 		if isinstance(value, ModuleType):
 			return f":mod:`{value.__name__}`"
+		elif isinstance(value, BuiltinFunctionType):
+			return f":py:func:`{value.__name__}`"
 		elif isinstance(value, FunctionType):
 			return f":py:func:`{value.__module__}.{value.__name__}`"
 		elif inspect.isclass(value):
-			return f":py:class:`{value.__module__}.{value.__name__}`"
+			if value.__module__ == "builtins":
+				return f":py:class:`{value.__name__}`"
+			else:
+				return f":py:class:`{value.__module__}.{value.__name__}`"
 		elif isinstance(value, bool):
 			return f":py:obj:`{value}`"
 		elif value is None:
