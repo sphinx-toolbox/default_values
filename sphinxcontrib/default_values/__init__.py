@@ -165,15 +165,15 @@ def process_docstring(
 			formatted_annotation = format_default_value(default_value)
 
 			# Check if the user has overridden the default value in the docstring
+			default_searchfor = re.compile(fr"^:[dD]efault {re.escape(argname)}:")
 			for i, line in enumerate(lines):
-				if re.match(fr"^:[dD]efault {re.escape(argname)}:", line):
+				if default_searchfor.match(line):
 					formatted_annotation = ":".join(line.split(":")[2:]).lstrip()
 					lines.remove(line)
 					break
 
 			# Check the user hasn't turned the default argument off
 			no_default_searchfor = re.compile(fr"^:(No|no)[-_](default|Default) {re.escape(argname)}:")
-
 			for i, line in enumerate(lines):
 				if no_default_searchfor.match(line):
 					formatted_annotation = None
@@ -182,9 +182,10 @@ def process_docstring(
 			# Add the default value
 			insert_index = None
 
+			# TODO: sphinx.domains.python.PyObject.doc_field_types
+			param_searchfor = re.compile(fr"^:(param|parameter|arg|argument) {re.escape(argname)}:")
 			for i, line in enumerate(lines):
-				# TODO: sphinx.domains.python.PyObject.doc_field_types
-				if re.match(fr"^:(param|parameter|arg|argument) {re.escape(argname)}:", line):
+				if param_searchfor.match(line):
 					insert_index = i
 					break
 
