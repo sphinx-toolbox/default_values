@@ -56,7 +56,7 @@ __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
 
 __license__: str = "MIT"
-__version__: str = "0.3.1"
+__version__: str = "0.4.0"
 __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = [
@@ -96,7 +96,7 @@ def format_default_value(value: Any) -> Optional[str]:
 
 	:param value:
 
-	.. versionadded:: 0.3.1
+	.. versionadded:: 0.4.0
 	"""
 
 	if value is not inspect.Signature.empty and value is not Ellipsis:
