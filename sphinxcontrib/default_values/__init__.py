@@ -151,7 +151,7 @@ def process_docstring(
 
 	if callable(obj):
 
-		if lines[-1]:
+		if not lines or lines[-1]:
 			lines.append('')
 
 		default_getter: Union[Callable[[Type], _defaults], Callable[[Callable], _defaults]]
