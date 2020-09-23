@@ -116,7 +116,7 @@ def format_default_value(value: Any) -> Optional[str]:
 			return f":py:obj:`{value}`"
 		elif value is None:
 			return ":py:obj:`None`"
-		elif isinstance(value, str):
+		elif isinstance(value, str) and not value.strip():
 			return f"``{value.replace(' ', '␣')!r}``"
 		else:
 			return f"``{value!r}``"

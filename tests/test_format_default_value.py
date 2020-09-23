@@ -29,7 +29,7 @@ from sphinxcontrib.default_values import format_default_value
 				("False", "``'False'``"),
 				("None", "``'None'``"),
 				("Hello", "``'Hello'``"),
-				("Hello World", "``'Hello␣World'``"),
+				("Hello World", "``'Hello World'``"),
 				(" ", "``'␣'``"),
 				("\t", "``'\\t'``"),
 				(1234, "``1234``"),

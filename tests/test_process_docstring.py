@@ -378,7 +378,7 @@ def test_process_docstring_demo(app):
 			":param d: A space (or a smiley face?).",
 			"    Default ``'␣'``.",
 			":param e: A string.",
-			"    Default ``'hello␣world'``.",
+			"    Default ``'hello world'``.",
 			":param f: A Tuple.",
 			"    Default ``()``.",
 			":param g: A Decimal.",
