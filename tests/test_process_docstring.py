@@ -362,7 +362,7 @@ def test_process_docstring_demo(app):
 			j: Optional[List[str]] = None,
 			k: Optional[List[str]] = None,
 			l: str = '',
-			m: str = '\t',
+			m: str = "\t",
 			n: Any = ...,
 			):
 		pass

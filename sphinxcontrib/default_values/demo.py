@@ -45,5 +45,5 @@ def demo(
 
 	The description for ``d`` lacked a fullstop at the end, but one was added automatically.
 
-	The default value of ``n`` was ``Ellipsis``, but it wasn't shown.
+	The default value of ``n`` was :py:obj:`Ellipsis`, but it wasn't shown.
 	"""
