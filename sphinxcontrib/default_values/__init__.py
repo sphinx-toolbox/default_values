@@ -147,7 +147,7 @@ def process_docstring(
 		return None
 
 	# Size varies depending on docutils config
-	a_tab = " " * app.config.docutils_tab_width  # type: ignore
+	a_tab = ' ' * app.config.docutils_tab_width  # type: ignore
 
 	if callable(obj):
 
@@ -173,7 +173,7 @@ def process_docstring(
 			default_searchfor = re.compile(fr"^:[dD]efault {re.escape(argname)}:")
 			for i, line in enumerate(lines):
 				if default_searchfor.match(line):
-					formatted_annotation = ":".join(line.split(":")[2:]).lstrip()
+					formatted_annotation = ':'.join(line.split(':')[2:]).lstrip()
 					lines.remove(line)
 					break
 
@@ -202,7 +202,7 @@ def process_docstring(
 						if not line.startswith(a_tab):
 
 							# Ensure the previous line has a fullstop at the end.
-							line_content = ":".join(lines[insert_index + idx].split(":")[2:]).strip()
+							line_content = ':'.join(lines[insert_index + idx].split(':')[2:]).strip()
 							if line_content and line_content[-1] not in ".,;:":
 								lines[insert_index + idx] += '.'
 
