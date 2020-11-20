@@ -3,7 +3,7 @@ Downloading source code
 =========================
 
 The ``default_values`` source code is available on GitHub,
-and can be accessed from the following URL: https://github.com/domdfcoding/default_values"
+and can be accessed from the following URL: https://github.com/domdfcoding/default_values
 
 If you have ``git`` installed, you can clone the repository with the following command:
 

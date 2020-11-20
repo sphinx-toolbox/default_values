@@ -40,11 +40,11 @@ default_values
 
 .. |actions_windows| image:: https://github.com/domdfcoding/default_values/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/default_values/actions?query=workflow%3A%22Windows+Tests%22
-	:alt: Windows Tests Status
+	:alt: Windows Test Status
 
 .. |actions_macos| image:: https://github.com/domdfcoding/default_values/workflows/macOS%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/default_values/actions?query=workflow%3A%22macOS+Tests%22
-	:alt: macOS Tests Status
+	:alt: macOS Test Status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/default_values/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/default_values/requirements/?branch=master

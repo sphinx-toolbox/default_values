@@ -39,11 +39,11 @@ default_values
 
 .. |actions_windows| actions-shield::
 	:workflow: Windows Tests
-	:alt: Windows Tests Status
+	:alt: Windows Test Status
 
 .. |actions_macos| actions-shield::
 	:workflow: macOS Tests
-	:alt: macOS Tests Status
+	:alt: macOS Test Status
 
 .. |requires| requires-io-shield::
 	:alt: Requirements Status
