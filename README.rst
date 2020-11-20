@@ -34,9 +34,9 @@ default_values
 	:target: https://github.com/domdfcoding/default_values/actions?query=workflow%3A%22Docs+Check%22
 	:alt: Docs Check Status
 
-.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/default_values/master?logo=travis
-	:target: https://travis-ci.com/domdfcoding/default_values
-	:alt: Travis Build Status
+.. |travis| image:: https://github.com/domdfcoding/default_values/workflows/Linux%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/default_values/actions?query=workflow%3A%Linux+Tests%22
+	:alt: Linux Test Status
 
 .. |actions_windows| image:: https://github.com/domdfcoding/default_values/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/default_values/actions?query=workflow%3A%22Windows+Tests%22
