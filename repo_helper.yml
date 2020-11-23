@@ -23,7 +23,6 @@ exclude_files:
  - bumpversion
  - rtfd
 
-travis_pypi_secure: "Q3JxpZNAtfAIhepsoypTFQxJTaAH1rh5SuOcWjat3BSn7Clzj8oKc+cigP5NOuY39NBRL4veDt3GfU2xg1/94hZKc42e6e5qEm6062g+WZWFdQjpCSZIjk/ZUOwhKwOV9tBysEw1MPNbsTi4GUD81dv4fDuOJsj29TeQzOwAahxzTMdJeqU1xnaZUC5ewGfjDzmjHD73Q1AFuVtvZV4OoVEMpAO3W2LcKMvoKUyzskG0IX+WkcB9nQMYotuxWrOQmum5DPw1P+j1RKJzWa6k+CNF+SXxiOueUwcZL6xWospGa4sPWC7LjSk8USGAyV/WHAirWCjY1CTAl2BLQuTxx3KLl7YKDMXwcMkG/K40kvn68gXCZbFxiBbXDJuFW+2j3IIWJ4g6sFv2n+L5KsT6YMwZAGNcA61ylKZ0MGX/P6jBKWCGvRrbhvEx1Oecr/3JNfejLglOPRPwuFpmkQ4xqEzhsQfaQ32Q624wvhoRKnAjPAeUGBI16/+d6vLhXngRXkLEjgJADRwDQ8t2Ed7XdlfMm+JhdV19P0lkXxsOxe9nmGYJSU5WD4Mb+IxQZUgXgzYk+kZaQHO+pmbKNXgO/qP61I0Zce90XEcIOJB1zGk9POE+/83AFbvSAzz6TrA4vRtfFpLcQbgjBTJhXRlEYgSdAqPERmNaoVMKUgre/1w="
 
 sphinx_html_theme: domdf_sphinx_theme
 
@@ -34,5 +33,3 @@ classifiers:
  - 'Topic :: Documentation'
  - 'Topic :: Documentation :: Sphinx'
  - 'Topic :: Software Development :: Documentation'
-
-use_travis: false
