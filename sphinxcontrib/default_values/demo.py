@@ -1,3 +1,5 @@
+# noqa: D100
+
 # stdlib
 from decimal import Decimal  # pragma: no cover
 from typing import Any, List, Optional, Tuple  # pragma: no cover
