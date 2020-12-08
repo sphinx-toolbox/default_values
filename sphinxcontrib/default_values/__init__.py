@@ -251,8 +251,6 @@ def get_class_defaults(obj: Type) -> _defaults:
 
 		yield argname, default_value
 
-	return None
-
 
 def get_function_defaults(obj: Callable) -> _defaults:
 	"""
@@ -265,8 +263,6 @@ def get_function_defaults(obj: Callable) -> _defaults:
 
 	for argname, param in get_arguments(obj).items():
 		yield argname, param.default
-
-	return None
 
 
 def get_arguments(obj: Callable) -> Mapping[str, inspect.Parameter]:
