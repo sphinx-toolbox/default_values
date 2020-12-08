@@ -72,10 +72,10 @@ __all__ = [
 		]
 
 #: Regular expression to match default values declared in docstrings.
-default_regex: Pattern = re.compile(r"^:(default|Default) ")
+default_regex: Pattern = re.compile("^:(default|Default) ")
 
 #: Regular expression to match flags in docstrings to suppress default values.
-no_default_regex: Pattern = re.compile(r"^:(No|no)[-_](default|Default) ")
+no_default_regex: Pattern = re.compile("^:(No|no)[-_](default|Default) ")
 
 
 def escape_trailing__(string: str) -> str:

@@ -27,7 +27,7 @@ default_values
 	  - |license| |language| |requires| |pre_commit|
 
 .. |docs| image:: https://img.shields.io/readthedocs/default_values/latest?logo=read-the-docs
-	:target: https://default_values.readthedocs.io/en/latest/?badge=latest
+	:target: https://default_values.readthedocs.io/en/latest
 	:alt: Documentation Build Status
 
 .. |docs_check| image:: https://github.com/domdfcoding/default_values/workflows/Docs%20Check/badge.svg

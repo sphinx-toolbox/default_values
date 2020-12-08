@@ -60,5 +60,5 @@ This allows for default values to be suppressed on a per-argument basis.
 No default value is shown if the argument does not have a default value.
 
 The formatting of the default value can be customised using the
-``default_description_format`` option in ``setup.py``.
+``default_description_format`` option in ``conf.py``.
 By default this is ``'Default %s'``.
