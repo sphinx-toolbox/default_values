@@ -1,7 +1,7 @@
 attrs>=20.2.0
 coverage>=5.1
 coverage-pyver-pragma>=0.0.6
-domdf-python-tools>=1.5.0
+domdf-python-tools>=1.6.0
 iniconfig!=1.1.0,>=1.0.1
 pytest>=6.0.0
 pytest-cov>=2.8.1
