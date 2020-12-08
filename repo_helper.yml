@@ -33,3 +33,7 @@ classifiers:
  - 'Topic :: Documentation'
  - 'Topic :: Documentation :: Sphinx'
  - 'Topic :: Software Development :: Documentation'
+
+keywords:
+ - sphinx
+ - documentation
