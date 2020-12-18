@@ -4,7 +4,9 @@ import_name: sphinxcontrib.default_values
 copyright_years: "2020"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
-username: "domdfcoding"
+username: 'sphinx-toolbox'
+assignee: 'domdfcoding'
+primary_conda_channel: 'domdfcoding'
 version: "0.4.1"
 license: "MIT"
 short_desc: "Sphinx extension to show default values in documentation."

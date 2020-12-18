@@ -127,6 +127,6 @@ default_values
 
 View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
 
-`Browse the GitHub Repository <https://github.com/domdfcoding/default_values>`__
+`Browse the GitHub Repository <https://github.com/sphinx-toolbox/default_values>`__
 
 .. end links
