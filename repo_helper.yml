@@ -11,20 +11,20 @@ version: "0.4.1"
 license: "MIT"
 short_desc: "Sphinx extension to show default values in documentation."
 
-enable_conda: false
+conda_channels:
+  - conda-forge
 
 # Versions to run tests for
 python_versions:
- - '3.6'
- - '3.7'
- - '3.8'
- - '3.9'
- - '3.10-dev'
+ - 3.6
+ - 3.7
+ - 3.8
+ - 3.9
+ - 3.10-dev
 
 exclude_files:
  - bumpversion
  - rtfd
-
 
 sphinx_html_theme: domdf_sphinx_theme
 

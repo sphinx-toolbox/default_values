@@ -20,6 +20,8 @@ default_values
 	  - |actions_linux| |actions_windows| |actions_macos| |coveralls| |codefactor| |pre_commit_ci|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+	* - Anaconda
+	  - |conda-version| |conda-platform|
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained|
 	* - Other
@@ -73,6 +75,14 @@ default_values
 	:project: default_values
 	:wheel:
 	:alt: PyPI - Wheel
+
+.. |conda-version| image:: https://img.shields.io/conda/v/domdfcoding/default_values?logo=anaconda
+	:target: https://anaconda.org/domdfcoding/default_values
+	:alt: Conda - Package Version
+
+.. |conda-platform| image:: https://img.shields.io/conda/pn/domdfcoding/default_values?label=conda%7Cplatform
+	:target: https://anaconda.org/domdfcoding/default_values
+	:alt: Conda - Platform
 
 .. |license| github-shield::
 	:license:
