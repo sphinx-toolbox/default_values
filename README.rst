@@ -74,8 +74,8 @@ default_values
 	:target: https://pypi.org/project/default_values/
 	:alt: PyPI - Wheel
 
-.. |license| image:: https://img.shields.io/github/license/domdfcoding/default_values
-	:target: https://github.com/domdfcoding/default_values/blob/master/LICENSE
+.. |license| image:: https://img.shields.io/github/license/sphinx-toolbox/default_values
+	:target: https://github.com/sphinx-toolbox/default_values/blob/master/LICENSE
 	:alt: License
 
 .. |language| image:: https://img.shields.io/github/languages/top/sphinx-toolbox/default_values
