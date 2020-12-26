@@ -101,7 +101,7 @@ default_values
 .. |language| image:: https://img.shields.io/github/languages/top/sphinx-toolbox/default_values
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/sphinx-toolbox/default_values/v0.4.1
+.. |commits-since| image:: https://img.shields.io/github/commits-since/sphinx-toolbox/default_values/v0.4.2
 	:target: https://github.com/sphinx-toolbox/default_values/pulse
 	:alt: GitHub commits since tagged version
 
