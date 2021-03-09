@@ -29,6 +29,7 @@ exclude_files:
  - rtfd
 
 sphinx_html_theme: domdf_sphinx_theme
+min_coverage: 100
 
 classifiers:
  - 'Development Status :: 4 - Beta'
