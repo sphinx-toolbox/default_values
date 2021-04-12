@@ -4,122 +4,121 @@ default_values
 
 .. start short_desc
 
-**Sphinx extension to show default values in documentation.**
+.. documentation-summary::
 
 .. end short_desc
 
 .. start shields
 
-.. list-table::
-	:stub-columns: 1
-	:widths: 10 90
+.. only:: html
 
-	* - Docs
-	  - |docs| |docs_check|
-	* - Tests
-	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
-	* - PyPI
-	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
-	* - Anaconda
-	  - |conda-version| |conda-platform|
-	* - Activity
-	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
-	* - QA
-	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
-	* - Other
-	  - |license| |language| |requires|
+	.. list-table::
+		:stub-columns: 1
+		:widths: 10 90
 
-.. |docs| rtfd-shield::
-	:project: default_values
-	:alt: Documentation Build Status
+		* - Docs
+		  - |docs| |docs_check|
+		* - Tests
+		  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
+		* - PyPI
+		  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+		* - Anaconda
+		  - |conda-version| |conda-platform|
+		* - Activity
+		  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
+		* - QA
+		  - |codefactor| |actions_flake8| |actions_mypy|
+		* - Other
+		  - |license| |language| |requires|
 
-.. |docs_check| actions-shield::
-	:workflow: Docs Check
-	:alt: Docs Check Status
+	.. |docs| rtfd-shield::
+		:project: default_values
+		:alt: Documentation Build Status
 
-.. |actions_linux| actions-shield::
-	:workflow: Linux
-	:alt: Linux Test Status
+	.. |docs_check| actions-shield::
+		:workflow: Docs Check
+		:alt: Docs Check Status
 
-.. |actions_windows| actions-shield::
-	:workflow: Windows
-	:alt: Windows Test Status
+	.. |actions_linux| actions-shield::
+		:workflow: Linux
+		:alt: Linux Test Status
 
-.. |actions_macos| actions-shield::
-	:workflow: macOS
-	:alt: macOS Test Status
+	.. |actions_windows| actions-shield::
+		:workflow: Windows
+		:alt: Windows Test Status
 
-.. |actions_flake8| actions-shield::
-	:workflow: Flake8
-	:alt: Flake8 Status
+	.. |actions_macos| actions-shield::
+		:workflow: macOS
+		:alt: macOS Test Status
 
-.. |actions_mypy| actions-shield::
-	:workflow: mypy
-	:alt: mypy status
+	.. |actions_flake8| actions-shield::
+		:workflow: Flake8
+		:alt: Flake8 Status
 
-.. |requires| requires-io-shield::
-	:alt: Requirements Status
+	.. |actions_mypy| actions-shield::
+		:workflow: mypy
+		:alt: mypy status
 
-.. |coveralls| coveralls-shield::
-	:alt: Coverage
+	.. |requires| requires-io-shield::
+		:alt: Requirements Status
 
-.. |codefactor| codefactor-shield::
-	:alt: CodeFactor Grade
+	.. |coveralls| coveralls-shield::
+		:alt: Coverage
 
-.. |pypi-version| pypi-shield::
-	:project: default_values
-	:version:
-	:alt: PyPI - Package Version
+	.. |codefactor| codefactor-shield::
+		:alt: CodeFactor Grade
 
-.. |supported-versions| pypi-shield::
-	:project: default_values
-	:py-versions:
-	:alt: PyPI - Supported Python Versions
+	.. |pypi-version| pypi-shield::
+		:project: default_values
+		:version:
+		:alt: PyPI - Package Version
 
-.. |supported-implementations| pypi-shield::
-	:project: default_values
-	:implementations:
-	:alt: PyPI - Supported Implementations
+	.. |supported-versions| pypi-shield::
+		:project: default_values
+		:py-versions:
+		:alt: PyPI - Supported Python Versions
 
-.. |wheel| pypi-shield::
-	:project: default_values
-	:wheel:
-	:alt: PyPI - Wheel
+	.. |supported-implementations| pypi-shield::
+		:project: default_values
+		:implementations:
+		:alt: PyPI - Supported Implementations
 
-.. |conda-version| image:: https://img.shields.io/conda/v/domdfcoding/default_values?logo=anaconda
-	:target: https://anaconda.org/domdfcoding/default_values
-	:alt: Conda - Package Version
+	.. |wheel| pypi-shield::
+		:project: default_values
+		:wheel:
+		:alt: PyPI - Wheel
 
-.. |conda-platform| image:: https://img.shields.io/conda/pn/domdfcoding/default_values?label=conda%7Cplatform
-	:target: https://anaconda.org/domdfcoding/default_values
-	:alt: Conda - Platform
+	.. |conda-version| image:: https://img.shields.io/conda/v/domdfcoding/default_values?logo=anaconda
+		:target: https://anaconda.org/domdfcoding/default_values
+		:alt: Conda - Package Version
 
-.. |license| github-shield::
-	:license:
-	:alt: License
+	.. |conda-platform| image:: https://img.shields.io/conda/pn/domdfcoding/default_values?label=conda%7Cplatform
+		:target: https://anaconda.org/domdfcoding/default_values
+		:alt: Conda - Platform
 
-.. |language| github-shield::
-	:top-language:
-	:alt: GitHub top language
+	.. |license| github-shield::
+		:license:
+		:alt: License
 
-.. |commits-since| github-shield::
-	:commits-since: v0.4.3
-	:alt: GitHub commits since tagged version
+	.. |language| github-shield::
+		:top-language:
+		:alt: GitHub top language
 
-.. |commits-latest| github-shield::
-	:last-commit:
-	:alt: GitHub last commit
+	.. |commits-since| github-shield::
+		:commits-since: v0.4.3
+		:alt: GitHub commits since tagged version
 
-.. |maintained| maintained-shield:: 2021
-	:alt: Maintenance
+	.. |commits-latest| github-shield::
+		:last-commit:
+		:alt: GitHub last commit
 
-.. |pypi-downloads| pypi-shield::
-	:project: default_values
-	:downloads: month
-	:alt: PyPI - Downloads
+	.. |maintained| maintained-shield:: 2021
+		:alt: Maintenance
 
-.. |pre_commit_ci| pre-commit-ci-shield::
-	:alt: pre-commit.ci status
+	.. |pypi-downloads| pypi-shield::
+		:project: default_values
+		:downloads: month
+		:alt: PyPI - Downloads
 
 .. end shields
 
@@ -147,8 +146,10 @@ default_values
 
 .. start links
 
-View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
+.. only:: html
 
-`Browse the GitHub Repository <https://github.com/sphinx-toolbox/default_values>`__
+	View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
+
+	`Browse the GitHub Repository <https://github.com/sphinx-toolbox/default_values>`__
 
 .. end links
