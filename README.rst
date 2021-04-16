@@ -8,6 +8,23 @@ default_values
 
 .. end short_desc
 
+For example:
+
+	.. code-block:: python
+
+		def namedlist(name: str = "NamedList") -> Callable:
+			"""
+			A factory function to return a custom list subclass with a name.
+
+			:param name: The name of the list.
+			:default name: :py:obj:`True`
+
+			:return:
+			"""
+
+	.. image:: https://default-values.readthedocs.io/en/latest/_images/after.png
+
+For more information see `the documentation <https://default-values.readthedocs.io/en/latest/usage.html>`_.
 
 .. start shields
 
@@ -139,8 +156,8 @@ To install with ``conda``:
 
 	.. code-block:: bash
 
-		$ conda config --add channels http://conda.anaconda.org/conda-forge
-		$ conda config --add channels http://conda.anaconda.org/domdfcoding
+		$ conda config --add channels https://conda.anaconda.org/conda-forge
+		$ conda config --add channels https://conda.anaconda.org/domdfcoding
 
 	* Then install
 
