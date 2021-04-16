@@ -1,6 +1,6 @@
-**************************
-API Reference
-**************************
+=============
+Public API
+=============
 
 .. automodule:: sphinxcontrib.default_values
 	:members:

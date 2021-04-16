@@ -123,6 +123,43 @@ default_values
 .. end shields
 
 
+This extension shows the default values in autodoc-formatted docstrings.
+
+The default behaviour of autodoc_ is to turn this:
+
+	.. code-block:: python
+
+		def namedlist(name: str = "NamedList") -> Callable:
+			"""
+			A factory function to return a custom list subclass with a name.
+
+			:param name: The name of the list.
+
+			:return:
+			"""
+
+into this:
+
+	.. image:: usage/before.png
+
+With ``default_values`` enabled, the documentation will now look like this:
+
+	.. image:: usage/after.png
+
+
+Default values are taken from the function/class signature.
+They can be overridden using the :rst:flag:`default` option in the docstring.
+The default value can be suppressed using the :rst:flag:`no-default` option.
+
+No default value is shown if the argument does not have a default value.
+
+The formatting of the default value can be customised using the
+:confval:`default_description_format` option in ``conf.py``.
+By default this is ``'Default %s'``.
+
+
+.. _autodoc: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
+
 .. toctree::
 	:hidden:
 
@@ -130,10 +167,10 @@ default_values
 
 .. toctree::
 	:maxdepth: 3
-	:caption: Documentation
+	:caption: Usage
 
-	installation
-	usage
+	usage/installation
+	usage/configuration
 	docs
 	demo
 

@@ -306,11 +306,9 @@ def process_default_format(app: Sphinx) -> None:
 
 def setup(app: Sphinx) -> Dict[str, Any]:
 	"""
-	Setup Sphinx Extension.
+	Setup :mod:`sphinxcontrib.default_values`.
 
 	:param app:
-
-	:return:
 	"""
 
 	# Custom formatting for the default value indication

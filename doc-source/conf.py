@@ -15,7 +15,7 @@ github_username = "sphinx-toolbox"
 github_repository = "default_values"
 author = "Dominic Davis-Foster"
 project = "default-values"
-copyright = "2020 Dominic Davis-Foster"
+copyright = "2020-2021 Dominic Davis-Foster"
 language = "en"
 package_root = "sphinxcontrib/default_values"
 extensions = [
@@ -37,6 +37,7 @@ extensions = [
 		"sphinxcontrib.toctree_plus",
 		"sphinx_debuginfo",
 		"seed_intersphinx_mapping",
+		"rst_flag",
 		]
 sphinxemoji_style = "twemoji"
 gitstamp_fmt = "%d %b %Y"
@@ -129,3 +130,6 @@ autodoc_default_options = {
 		"show-inheritance": None,
 		"exclude-members": ','.join(autodoc_exclude_members),
 		}
+
+__import__("sys").path.append(os.path.abspath('.'))
+toctree_plus_types.add("rst-flag")
