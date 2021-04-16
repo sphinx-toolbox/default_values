@@ -17,7 +17,6 @@ For example:
 			A factory function to return a custom list subclass with a name.
 
 			:param name: The name of the list.
-			:default name: :py:obj:`True`
 
 			:return:
 			"""
