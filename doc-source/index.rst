@@ -122,6 +122,8 @@ default_values
 
 .. end shields
 
+Overview
+-----------
 
 This extension shows the default values in autodoc-formatted docstrings.
 
