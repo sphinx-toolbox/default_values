@@ -7,12 +7,12 @@ name = "default_values"
 version = "0.4.3"
 description = "Sphinx extension to show default values in documentation."
 readme = "README.rst"
-keywords = [ "documentation", "sphinx",]
+keywords = [ "sphinx", "documentation",]
 dynamic = [ "requires-python", "classifiers", "dependencies",]
 
 [[project.authors]]
-name = "Dominic Davis-Foster"
 email = "dominic@davis-foster.co.uk"
+name = "Dominic Davis-Foster"
 
 
 [project.license]
