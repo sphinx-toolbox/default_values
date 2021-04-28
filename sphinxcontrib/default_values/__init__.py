@@ -74,7 +74,7 @@ __all__ = [
 #: Regular expression to match default values declared in docstrings.
 default_regex: Pattern = re.compile("^:(default|Default) ")
 
-#: Regular expression to match flags in docstrings to suppress default values.
+#: Regular expression to match fields in docstrings to suppress default values.
 no_default_regex: Pattern = re.compile("^:(No|no)[-_](default|Default) ")
 
 

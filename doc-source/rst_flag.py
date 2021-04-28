@@ -41,9 +41,9 @@ from sphinx.roles import XRefRole
 from sphinx.util.nodes import make_id
 
 
-class ReSTFlag(ReSTMarkup):
+class ReSTField(ReSTMarkup):
 	"""
-	Description of a reST directive.
+	Description of a reST directive field.
 	"""
 
 	def handle_signature(self, sig: str, signode: desc_signature) -> str:
@@ -79,7 +79,7 @@ class ReSTFlag(ReSTMarkup):
 		domain.note_object(self.objtype, objname, node_id, location=signode)
 
 		key = name[0].upper()
-		text = _(":%s: (flag)") % name
+		text = _(":%s: (field)") % name
 		self.indexnode["entries"].append(("single", text, node_id, '', key))
 
 
@@ -90,8 +90,8 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 	:param app: The Sphinx app.
 	"""
 
-	app.add_directive_to_domain("rst", "flag", ReSTFlag)
-	app.add_role_to_domain("rst", "flag", XRefRole())
-	ReSTDomain.object_types["flag"] = ObjType(_("flag"), "flag")
+	app.add_directive_to_domain("rst", "field", ReSTField)
+	app.add_role_to_domain("rst", "field", XRefRole())
+	ReSTDomain.object_types["field"] = ObjType(_("field"), "field")
 
 	return {"parallel_read_safe": True}

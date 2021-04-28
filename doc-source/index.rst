@@ -150,8 +150,8 @@ With ``default_values`` enabled, the documentation will now look like this:
 
 
 Default values are taken from the function/class signature.
-They can be overridden using the :rst:flag:`default` option in the docstring.
-The default value can be suppressed using the :rst:flag:`no-default` option.
+They can be overridden using the :rst:field:`default` option in the docstring.
+The default value can be suppressed using the :rst:field:`no-default` option.
 
 No default value is shown if the argument does not have a default value.
 

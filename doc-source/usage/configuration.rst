@@ -9,12 +9,12 @@ Configuration
 
 	The format string for the default value.
 
-Flags
+Fields
 ---------
 
-These flags can be used in docstrings for classes, functions, methods etc., alongside other flags such as ``:param:``.
+These fields can be used in docstrings for classes, functions, methods etc., alongside other fields such as ``:param:``.
 
-.. rst:flag:: default <name>: value
+.. rst:field:: default <name>: value
 
 	Overrides the default value for ``<name>``.
 
@@ -33,10 +33,9 @@ These flags can be used in docstrings for classes, functions, methods etc., alon
 	.. image:: override.png
 
 
-.. rst:flag:: no-default <name>: value
+.. rst:field:: no-default <name>: value
 
 	Suppresses display of the default value for ``<name>``.
-
 
 	This allows for default values to be suppressed on a per-argument basis.
 
