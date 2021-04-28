@@ -45,8 +45,7 @@ keywords:
  - documentation
 
 extra_sphinx_extensions:
- - rst_flag
+ - rst_field
 
 sphinx_conf_epilogue:
- - __import__("sys").path.append(os.path.abspath("."))
- - toctree_plus_types.add("rst-flag")
+ - toctree_plus_types.add("rst-field")

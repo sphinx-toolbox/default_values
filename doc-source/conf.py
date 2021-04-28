@@ -59,5 +59,4 @@ autodoc_default_options = {
 		"exclude-members": ','.join(config["autodoc_exclude_members"]),
 		}
 
-__import__("sys").path.append(os.path.abspath('.'))
-toctree_plus_types.add("rst-flag")
+toctree_plus_types.add("rst-field")

@@ -71,7 +71,7 @@ extensions = [
     "sphinxcontrib.toctree_plus",
     "sphinx_debuginfo",
     "seed_intersphinx_mapping",
-    "rst_flag",
+    "rst_field",
 ]
 sphinxemoji_style = "twemoji"
 gitstamp_fmt = "%d %b %Y"
@@ -103,7 +103,6 @@ add_module_names = false
 hide_none_rtype = true
 all_typevars = true
 overloads_location = "bottom"
-documentation_summary = "Sphinx extension to show default values in documentation."
 autodoc_exclude_members = [
     "__dict__",
     "__class__",

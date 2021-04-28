@@ -127,7 +127,7 @@ Overview
 
 This extension shows the default values in autodoc-formatted docstrings.
 
-The default behaviour of autodoc_ is to turn this:
+The default behaviour of :mod:`~sphinx.ext.autodoc` is to turn this:
 
 	.. code-block:: python
 
