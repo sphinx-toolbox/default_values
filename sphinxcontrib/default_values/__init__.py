@@ -54,7 +54,6 @@ except ImportError:  # pragma: no cover
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
-
 __license__: str = "MIT"
 __version__: str = "0.4.3"
 __email__: str = "dominic@davis-foster.co.uk"
@@ -71,11 +70,30 @@ __all__ = [
 		"format_default_value",
 		]
 
-#: Regular expression to match default values declared in docstrings.
-default_regex: Pattern = re.compile("^:(default|Default) ")
+default_regex: Pattern = re.compile("^:(?i:default) ")
+"""
+Regular expression to match default values declared in docstrings.
 
-#: Regular expression to match fields in docstrings to suppress default values.
-no_default_regex: Pattern = re.compile("^:(No|no)[-_](default|Default) ")
+.. versionchanged:: 0.5.0  Change to be case insensitive.
+"""
+
+no_default_regex: Pattern = re.compile("^:(?i:no[-_]default) ")
+"""
+Regular expression to match fields in docstrings to suppress default values.
+
+.. versionchanged:: 0.5.0  Change to be case insensitive.
+"""
+
+# ref: sphinx.domains.python.PyObject.doc_field_types
+_fields = '|'.join([
+		"param",
+		"parameter",
+		"arg",
+		"argument",
+		"keyword",
+		"kwarg",
+		"kwparam",
+		])
 
 
 def escape_trailing__(string: str) -> str:
@@ -170,7 +188,7 @@ def process_docstring(
 			formatted_annotation = format_default_value(default_value)
 
 			# Check if the user has overridden the default value in the docstring
-			default_searchfor = re.compile(fr"^:[dD]efault {re.escape(argname)}:")
+			default_searchfor = re.compile(fr"^:(?i:default) {re.escape(argname)}:")
 			for i, line in enumerate(lines):
 				if default_searchfor.match(line):
 					formatted_annotation = ':'.join(line.split(':')[2:]).lstrip()
@@ -178,7 +196,7 @@ def process_docstring(
 					break
 
 			# Check the user hasn't turned the default argument off
-			no_default_searchfor = re.compile(fr"^:(No|no)[-_](default|Default) {re.escape(argname)}:")
+			no_default_searchfor = re.compile(f"^:(?i:no[-_]default) {re.escape(argname)}:")
 			for i, line in enumerate(lines):
 				if no_default_searchfor.match(line):
 					formatted_annotation = None
@@ -187,8 +205,7 @@ def process_docstring(
 			# Add the default value
 			insert_index = None
 
-			# TODO: sphinx.domains.python.PyObject.doc_field_types
-			param_searchfor = re.compile(fr"^:(param|parameter|arg|argument) {re.escape(argname)}:")
+			param_searchfor = re.compile(f"^:({_fields}) {re.escape(argname)}:")
 			for i, line in enumerate(lines):
 				if param_searchfor.match(line):
 					insert_index = i
