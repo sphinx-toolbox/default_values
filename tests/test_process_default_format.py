@@ -39,7 +39,6 @@ class MockApp:
 				("The default value is\t", "The default value is\t%s"),
 				("The default value is  ", "The default value is  %s"),
 				("%s is the default value", "%s is the default value"),
-				# TODO: Does it fail if there's no space after %s?
 				]
 		)
 def test_process_default_format(value, expects):
