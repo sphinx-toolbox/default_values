@@ -11,6 +11,8 @@ version: "0.4.3"
 license: "MIT"
 short_desc: "Sphinx extension to show default values in documentation."
 
+preserve_custom_theme: true
+
 conda_channels:
   - conda-forge
 
@@ -26,7 +28,7 @@ python_versions:
 
 exclude_files:
  - bumpversion
- - rtfd
+ - contributing
 
 sphinx_html_theme: domdf_sphinx_theme
 min_coverage: 100
