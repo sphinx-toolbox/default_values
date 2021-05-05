@@ -169,7 +169,6 @@ By default this is ``'Default %s'``.
 
 .. toctree::
 	:maxdepth: 3
-	:caption: Usage
 
 	usage/installation
 	usage/configuration
