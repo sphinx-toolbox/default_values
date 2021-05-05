@@ -162,6 +162,11 @@ By default this is ``'Default %s'``.
 
 .. _autodoc: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html
 
+Contents
+-----------
+
+.. html-section::
+
 .. toctree::
 	:hidden:
 
