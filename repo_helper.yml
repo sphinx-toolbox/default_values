@@ -46,7 +46,8 @@ keywords:
 
 extra_sphinx_extensions:
  - rst_field
- - html_section
+ - sphinx_toolbox_experimental.html_section
+ - sphinx_toolbox_experimental.autosummary_widths
 
 sphinx_conf_epilogue:
  - toctree_plus_types.add("rst-field")

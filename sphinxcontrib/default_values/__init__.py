@@ -112,9 +112,9 @@ def format_default_value(value: Any) -> Optional[str]:
 	"""
 	Format the value as a string.
 
-	:param value:
-
 	.. versionadded:: 0.4.3
+
+	:param value:
 	"""
 
 	if value is not inspect.Signature.empty and value is not Ellipsis:
