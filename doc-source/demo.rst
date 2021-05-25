@@ -6,6 +6,9 @@ Demo
 	:no-autosummary:
 	:members:
 
+-----
+
+.. latex:vspace:: 40px
 
 The above example was created from the following Python code:
 

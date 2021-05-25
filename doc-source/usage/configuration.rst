@@ -30,7 +30,17 @@ These fields can be used in docstrings for classes, functions, methods etc., alo
 		:param name: The name of the list.
 		:default name: :py:obj:`True`
 
-	.. image:: override.png
+	.. function:: domdf_python_tools.bases.namedlist (name='NamedList')
+		:noindex:
+
+		A factory function to return a custom list subclass with a name.
+
+		:param name: The name of the list. Default :py:obj:`True`.
+		:type name: :class:`str`
+
+		:rtype: :class:`~typing.Callable`
+
+..	.. image:: override.png
 
 
 .. rst:field:: no-default <name>: value
@@ -46,4 +56,14 @@ These fields can be used in docstrings for classes, functions, methods etc., alo
 		:param name: The name of the list.
 		:no-default name:
 
-	.. image:: before.png
+	.. function:: domdf_python_tools.bases.namedlist (name='NamedList')
+		:noindex:
+
+		A factory function to return a custom list subclass with a name.
+
+		:param name: The name of the list.
+		:type name: :class:`str`
+
+		:rtype: :class:`~typing.Callable`
+
+..	.. image:: before.png

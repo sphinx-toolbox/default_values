@@ -142,11 +142,33 @@ The default behaviour of :mod:`~sphinx.ext.autodoc` is to turn this:
 
 into this:
 
-	.. image:: usage/before.png
+
+	.. function:: domdf_python_tools.bases.namedlist (name='NamedList')
+		:noindex:
+
+		A factory function to return a custom list subclass with a name.
+
+		:param name: The name of the list.
+		:type name: :class:`str`
+
+		:rtype: :class:`~typing.Callable`
+
+..	.. image:: usage/before.png
 
 With ``default_values`` enabled, the documentation will now look like this:
 
-	.. image:: usage/after.png
+	.. function:: domdf_python_tools.bases.namedlist (name='NamedList')
+		:noindex:
+
+		A factory function to return a custom list subclass with a name.
+
+		:param name: The name of the list. Default ``'NamedList'``.
+		:type name: :class:`str`
+
+		:rtype: :class:`~typing.Callable`
+
+
+..	.. image:: usage/after.png
 
 
 Default values are taken from the function/class signature.
