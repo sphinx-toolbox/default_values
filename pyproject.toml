@@ -72,7 +72,7 @@ extensions = [
     "sphinxcontrib.toctree_plus",
     "sphinx_debuginfo",
     "seed_intersphinx_mapping",
-    "rst_field",
+    "sphinx_toolbox_experimental.rst_field",
     "sphinx_toolbox_experimental.html_section",
     "sphinx_toolbox_experimental.autosummary_widths",
 ]

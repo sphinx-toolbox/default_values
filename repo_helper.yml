@@ -45,7 +45,7 @@ keywords:
  - documentation
 
 extra_sphinx_extensions:
- - rst_field
+ - sphinx_toolbox_experimental.rst_field
  - sphinx_toolbox_experimental.html_section
  - sphinx_toolbox_experimental.autosummary_widths
 
