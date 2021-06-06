@@ -302,7 +302,6 @@ def process_default_format(app: Sphinx) -> None:
 	Prepare the formatting of the default value.
 
 	:param app:
-	:type app:
 	"""
 
 	default_description_format: str = app.config.default_description_format  # type: ignore

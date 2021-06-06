@@ -204,12 +204,11 @@ Contents
 	demo
 	Source
 
-.. toctree::
+.. sidebar-links::
 	:caption: Links
-	:hidden:
+	:github:
+	:pypi: default_values
 
-	GitHub <https://github.com/sphinx-toolbox/default_values>
-	PyPI <https://pypi.org/project/default_values>
 	Contributing Guide <https://contributing-to-sphinx-toolbox.readthedocs.io/en/latest/>
 
 .. start links
