@@ -165,7 +165,7 @@ def process_docstring(
 		return None
 
 	# Size varies depending on docutils config
-	a_tab = ' ' * app.config.docutils_tab_width  # type: ignore
+	a_tab = ' ' * app.config.docutils_tab_width
 
 	if callable(obj):
 
@@ -179,7 +179,7 @@ def process_docstring(
 		else:
 			default_getter = get_function_defaults
 
-		default_description_format: str = app.config.default_description_format  # type: ignore
+		default_description_format: str = app.config.default_description_format
 
 		for argname, default_value in default_getter(obj):
 			argname = escape_trailing__(argname)
@@ -304,7 +304,7 @@ def process_default_format(app: Sphinx) -> None:
 	:param app:
 	"""
 
-	default_description_format: str = app.config.default_description_format  # type: ignore
+	default_description_format: str = app.config.default_description_format
 
 	# Check the substitution is in the string and is preceded by whitespace, or is at the beginning of the string
 	if "%s" in default_description_format:
