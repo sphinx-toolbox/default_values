@@ -55,7 +55,7 @@ except ImportError:  # pragma: no cover
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
 __license__: str = "MIT"
-__version__: str = "0.4.3"
+__version__: str = "0.5.0b1"
 __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = [
@@ -112,7 +112,7 @@ def format_default_value(value: Any) -> Optional[str]:
 	"""
 	Format the value as a string.
 
-	.. versionadded:: 0.4.3
+	.. versionadded:: 0.5.0b1
 
 	:param value:
 	"""
