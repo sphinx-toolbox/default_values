@@ -2,7 +2,7 @@
 #
 #  __init__.py
 """
-A Sphinx directive to specify that a module has extra requirements, and show how to install them.
+Sphinx extension to show default values in documentation.
 """
 #
 #  Copyright © 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>

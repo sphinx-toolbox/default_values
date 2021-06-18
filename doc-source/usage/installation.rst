@@ -5,6 +5,8 @@ Installation
 .. installation:: default_values
 	:pypi:
 	:github:
+	:anaconda:
+	:conda-channels: conda-forge,domdfcoding
 
 
 .. raw:: latex
