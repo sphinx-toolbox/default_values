@@ -210,6 +210,7 @@ Contents
 	:pypi: default_values
 
 	Contributing Guide <https://contributing-to-sphinx-toolbox.readthedocs.io/en/latest/>
+	license
 
 .. start links
 
