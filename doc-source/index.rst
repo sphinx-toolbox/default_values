@@ -60,8 +60,8 @@ default_values
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| image:: https://dependency-dash.herokuapp.com/github/sphinx-toolbox/default_values/badge.svg
-		:target: https://dependency-dash.herokuapp.com/github/sphinx-toolbox/default_values/
+	.. |requires| image:: https://dependency-dash.repo-helper.uk/github/sphinx-toolbox/default_values/badge.svg
+		:target: https://dependency-dash.repo-helper.uk/github/sphinx-toolbox/default_values/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
