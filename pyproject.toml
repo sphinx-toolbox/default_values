@@ -22,7 +22,7 @@ file = "LICENSE"
 Homepage = "https://github.com/sphinx-toolbox/default_values"
 "Issue Tracker" = "https://github.com/sphinx-toolbox/default_values/issues"
 "Source Code" = "https://github.com/sphinx-toolbox/default_values"
-Documentation = "https://default_values.readthedocs.io/en/latest"
+Documentation = "https://default-values.readthedocs.io/en/latest"
 
 [tool.whey]
 base-classifiers = [

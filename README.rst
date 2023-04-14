@@ -46,8 +46,8 @@ For more information see `the documentation <https://default-values.readthedocs.
 	* - Other
 	  - |license| |language| |requires|
 
-.. |docs| image:: https://img.shields.io/readthedocs/default_values/latest?logo=read-the-docs
-	:target: https://default_values.readthedocs.io/en/latest
+.. |docs| image:: https://img.shields.io/readthedocs/default-values/latest?logo=read-the-docs
+	:target: https://default-values.readthedocs.io/en/latest
 	:alt: Documentation Build Status
 
 .. |docs_check| image:: https://github.com/sphinx-toolbox/default_values/workflows/Docs%20Check/badge.svg
@@ -125,7 +125,7 @@ For more information see `the documentation <https://default-values.readthedocs.
 	:target: https://github.com/sphinx-toolbox/default_values/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2022
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2023
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/default_values
