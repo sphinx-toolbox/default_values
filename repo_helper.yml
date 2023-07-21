@@ -29,16 +29,20 @@ python_versions:
     - 5.3
     - 6.0
     - 6.1
+    - 6.2
+    - 7.0
  3.7:
   matrix_exclude:
    sphinx:
     - 6.0
     - 6.1
+    - 6.2
+    - 7.0
  3.8:
  3.9:
  "3.10":
  "3.11":
-# 3.12-dev:
+ 3.12-dev:
  pypy36:
   matrix_exclude:
    sphinx:
@@ -49,12 +53,20 @@ python_versions:
     - 5.1
     - 5.2
     - 5.3
+    - 6.0
+    - 6.1
+    - 6.2
+    - 7.0
  pypy37:
   matrix_exclude:
    sphinx:
     - 3.3
     - 3.4
     - 3.5
+    - 6.0
+    - 6.1
+    - 6.2
+    - 7.0
  pypy38:
   matrix_exclude:
    sphinx:
@@ -107,3 +119,7 @@ third_party_version_matrix:
     - 5.1
     - 5.2
     - 5.3
+    - 6.0
+    - 6.1
+    - 6.2
+    - 7.0
