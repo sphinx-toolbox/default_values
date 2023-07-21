@@ -225,19 +225,24 @@ def process_docstring(
 
 							lines.insert(
 									insert_index + 1 + idx,
-									f"{a_tab}{default_description_format % formatted_annotation}."
+									f"{a_tab}{default_description_format % formatted_annotation}".rstrip('.') + '.'
 									)
 							break
+
+		indices_to_remove = set()
 
 		# Remove all remaining :default *: lines
 		for i, line in enumerate(lines):
 			if default_regex.match(line):
-				lines.remove(line)
+				indices_to_remove.add(i)
 
 		# Remove all remaining :no-default *: lines
 		for i, line in enumerate(lines):
 			if no_default_regex.match(line):
-				lines.remove(line)
+				indices_to_remove.add(i)
+
+		for i in sorted(indices_to_remove, reverse=True):
+			del lines[i]
 
 	return None
 
