@@ -55,7 +55,7 @@ except ImportError:  # pragma: no cover
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
 __license__: str = "MIT"
-__version__: str = "0.5.2"
+__version__: str = "0.5.3"
 __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = [
@@ -74,14 +74,14 @@ default_regex: Pattern = re.compile("^:(?i:default) ")
 """
 Regular expression to match default values declared in docstrings.
 
-.. versionchanged:: 0.5.2  Change to be case insensitive.
+.. versionchanged:: 0.5.3  Change to be case insensitive.
 """
 
 no_default_regex: Pattern = re.compile("^:(?i:no[-_]default) ")
 """
 Regular expression to match fields in docstrings to suppress default values.
 
-.. versionchanged:: 0.5.2  Change to be case insensitive.
+.. versionchanged:: 0.5.3  Change to be case insensitive.
 """
 
 # ref: sphinx.domains.python.PyObject.doc_field_types
@@ -112,7 +112,7 @@ def format_default_value(value: Any) -> Optional[str]:
 	"""
 	Format the value as a string.
 
-	.. versionadded:: 0.5.2
+	.. versionadded:: 0.5.3
 
 	:param value:
 	"""
