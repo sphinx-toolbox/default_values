@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "default_values"
-version = "0.5.3"
+version = "0.6.0"
 description = "Sphinx extension to show default values in documentation."
 readme = "README.rst"
 keywords = [ "documentation", "sphinx",]
