@@ -51,5 +51,5 @@ known_third_party = [
     "sphinx_jinja2_compat",
     "sphinx_toolbox",
 ]
-known_first_party = "sphinxcontrib.default_values"
+known_first_party = [ "sphinxcontrib_default_values",]
 line_length = 115
