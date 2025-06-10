@@ -29,7 +29,7 @@ class MockApp:
 		self.config.default_description_format = format_
 
 
-def namedlist(name: str = "NamedList") -> Callable:
+def namedlist(name: str = "NamedList") -> Callable:  # type: ignore[empty-body]
 	pass
 
 
@@ -160,7 +160,7 @@ def test_process_docstring_underscores(app):
 			":return:",
 			]
 
-	def underscore(name_: str = "NamedList") -> Callable:
+	def underscore(name_: str = "NamedList") -> Callable:  # type: ignore[empty-body]
 		pass
 
 	process_docstring(app, '', '', underscore, {}, lines)

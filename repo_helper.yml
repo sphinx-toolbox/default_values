@@ -144,7 +144,10 @@ python_versions:
 exclude_files:
  - bumpversion
  - contributing
- - tox
+
+tox_unmanaged:
+ - testenv
+ - fixups
 
 classifiers:
  - 'Development Status :: 4 - Beta'
