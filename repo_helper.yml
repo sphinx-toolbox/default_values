@@ -15,7 +15,6 @@ use_whey: true
 min_coverage: 100
 preserve_custom_theme: true
 mypy_version: 1.16
-python_deploy_version: 3.9
 
 conda_channels:
   - conda-forge
