@@ -86,20 +86,20 @@ For more information see `the documentation <https://default-values.readthedocs.
 	:target: https://www.codefactor.io/repository/github/sphinx-toolbox/default_values
 	:alt: CodeFactor Grade
 
-.. |pypi-version| image:: https://img.shields.io/pypi/v/default_values
-	:target: https://pypi.org/project/default_values/
+.. |pypi-version| image:: https://img.shields.io/pypi/v/default-values
+	:target: https://pypi.org/project/default-values/
 	:alt: PyPI - Package Version
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/default_values?logo=python&logoColor=white
-	:target: https://pypi.org/project/default_values/
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/default-values?logo=python&logoColor=white
+	:target: https://pypi.org/project/default-values/
 	:alt: PyPI - Supported Python Versions
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/default_values
-	:target: https://pypi.org/project/default_values/
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/default-values
+	:target: https://pypi.org/project/default-values/
 	:alt: PyPI - Supported Implementations
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/default_values
-	:target: https://pypi.org/project/default_values/
+.. |wheel| image:: https://img.shields.io/pypi/wheel/default-values
+	:target: https://pypi.org/project/default-values/
 	:alt: PyPI - Wheel
 
 .. |conda-version| image:: https://img.shields.io/conda/v/domdfcoding/default_values?logo=anaconda
@@ -125,11 +125,11 @@ For more information see `the documentation <https://default-values.readthedocs.
 	:target: https://github.com/sphinx-toolbox/default_values/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2025
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2026
 	:alt: Maintenance
 
-.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/default_values
-	:target: https://pypi.org/project/default_values/
+.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/default-values
+	:target: https://pypistats.org/packages/default-values
 	:alt: PyPI - Downloads
 
 .. end shields
@@ -147,7 +147,7 @@ To install with ``pip``:
 
 .. code-block:: bash
 
-	$ python -m pip install default_values
+	$ python -m pip install default-values
 
 To install with ``conda``:
 

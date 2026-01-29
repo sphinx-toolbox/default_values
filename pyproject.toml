@@ -3,7 +3,7 @@ requires = [ "whey",]
 build-backend = "whey"
 
 [project]
-name = "default_values"
+name = "default-values"
 version = "0.7.0"
 description = "Sphinx extension to show default values in documentation."
 readme = "README.rst"

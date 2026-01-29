@@ -71,22 +71,22 @@ default_values
 		:alt: CodeFactor Grade
 
 	.. |pypi-version| pypi-shield::
-		:project: default_values
+		:project: default-values
 		:version:
 		:alt: PyPI - Package Version
 
 	.. |supported-versions| pypi-shield::
-		:project: default_values
+		:project: default-values
 		:py-versions:
 		:alt: PyPI - Supported Python Versions
 
 	.. |supported-implementations| pypi-shield::
-		:project: default_values
+		:project: default-values
 		:implementations:
 		:alt: PyPI - Supported Implementations
 
 	.. |wheel| pypi-shield::
-		:project: default_values
+		:project: default-values
 		:wheel:
 		:alt: PyPI - Wheel
 
@@ -114,11 +114,11 @@ default_values
 		:last-commit:
 		:alt: GitHub last commit
 
-	.. |maintained| maintained-shield:: 2025
+	.. |maintained| maintained-shield:: 2026
 		:alt: Maintenance
 
 	.. |pypi-downloads| pypi-shield::
-		:project: default_values
+		:project: default-values
 		:downloads: month
 		:alt: PyPI - Downloads
 
