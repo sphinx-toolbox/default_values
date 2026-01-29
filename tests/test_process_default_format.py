@@ -39,7 +39,7 @@ class MockApp:
 				("The default value is\t", "The default value is\t%s"),
 				("The default value is  ", "The default value is  %s"),
 				("%s is the default value", "%s is the default value"),
-				]
+				],
 		)
 def test_process_default_format(value, expects):
 	app = MockApp(value)
