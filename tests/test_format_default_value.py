@@ -38,7 +38,7 @@ from sphinxcontrib.default_values import format_default_value
 				(inspect.Signature.empty, None),
 				(re.compile(".*"), "``re.compile('.*')``"),
 				(re.compile(".*", flags=re.ASCII), "``re.compile('.*', re.ASCII)``"),
-				]
+				],
 		)
 def test_format_default_value(value, expects):
 	assert format_default_value(value) == expects

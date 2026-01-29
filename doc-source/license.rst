@@ -7,4 +7,4 @@ License
 .. license-info:: MIT
 
 .. license::
-	:py: default_values
+	:py: default-values

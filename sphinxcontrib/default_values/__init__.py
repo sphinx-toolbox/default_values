@@ -225,7 +225,8 @@ def process_docstring(
 
 							lines.insert(
 									insert_index + 1 + idx,
-									f"{a_tab}{default_description_format % formatted_annotation}".rstrip('.') + '.'
+									f"{a_tab}{default_description_format % formatted_annotation}".rstrip('.')
+									+ '.',
 									)
 							break
 
