@@ -14,7 +14,6 @@ short_desc: "Sphinx extension to show default values in documentation."
 use_whey: true
 min_coverage: 100
 preserve_custom_theme: true
-mypy_version: 1.16
 
 conda_channels:
   - conda-forge
